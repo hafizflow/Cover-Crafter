@@ -1,0 +1,65 @@
+name: cover_page
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+
+# - - - - - - - - - - PACKAGES START - - - - - - - - - - #
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Utility Packages
+  url_launcher: ^6.2.5
+  intl: ^0.19.0
+  fluttertoast: ^8.2.4
+  another_flushbar: ^1.12.30
+
+  # Icon Packages
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.6
+
+  # Stage Management and Local Storage Package
+  get: ^4.6.6
+  get_storage: ^2.1.1
+
+
+# - - - - - - - - - - PACKAGES END - - - - - - - - - - #
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.2
+
+flutter:
+  uses-material-design: true
+
+  # - - - - - - - - LOCAL ASSETS - - - - - - - - #
+  assets:
+    - assets/images/
+    - assets/logos/
+
+
+    # - - - - - - - - LOCAL FONTS - - - - - - - - #
+  fonts:
+      - family: Poppins
+        fonts:
+          - asset: assets/fonts/Poppins-Light.ttf
+            weight: 300
+          - asset: assets/fonts/Poppins-Regular.ttf
+            weight: 400
+          - asset: assets/fonts/Poppins-Medium.ttf
+            weight: 500
+          - asset: assets/fonts/Poppins-Italic.ttf
+          - asset: assets/fonts/Poppins-MediumItalic.ttf
+            weight: 500
+          - asset: assets/fonts/Poppins-SemiBold.ttf
+            weight: 600
+          - asset: assets/fonts/Poppins-Bold.ttf
+            weight: 800
+  
+  
