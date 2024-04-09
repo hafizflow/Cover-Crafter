@@ -4,9 +4,10 @@ class CTextFieldTheme {
   CTextFieldTheme._();
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 1,
-    prefixIconColor: Colors.grey,
-    suffixIconColor: Colors.grey,
-    labelStyle: const TextStyle().copyWith(fontSize: 14, color: Colors.black),
+    prefixIconColor: Colors.grey.shade600,
+    suffixIconColor: Colors.grey.shade600,
+    labelStyle:
+        const TextStyle().copyWith(fontSize: 14, color: Colors.grey.shade600),
     hintStyle: const TextStyle().copyWith(fontSize: 14, color: Colors.black),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle:
@@ -34,7 +35,7 @@ class CTextFieldTheme {
   );
 
   static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
-    errorMaxLines: 2,
+    errorMaxLines: 1,
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
     labelStyle: const TextStyle().copyWith(fontSize: 14, color: Colors.white),

@@ -8,25 +8,33 @@ class CTextFormField extends StatelessWidget {
     this.maxLength,
     this.controller,
     this.textInputAction = TextInputAction.next,
+    this.suffixIcon,
+    this.onTap,
+    this.readOnly = false,
   });
 
   final String label;
-  final IconData prefixIcon;
   final int? maxLength;
+  final IconData prefixIcon;
+  final IconData? suffixIcon;
   final TextEditingController? controller;
   final TextInputAction? textInputAction;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       maxLength: maxLength,
       controller: controller,
       textInputAction: textInputAction,
       decoration: InputDecoration(
-        prefixIcon: Icon(prefixIcon),
-        label: Text(label),
         counterText: '',
+        label: Text(label),
+        prefixIcon: Icon(prefixIcon),
       ),
+      readOnly: readOnly,
     );
   }
 }
