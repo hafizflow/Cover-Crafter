@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:cover_page/common/widgets/info_fillup/section_divider.dart';
 import 'package:cover_page/features/personalization/controllers/date_controller.dart';
-import 'package:cover_page/utils/constants/cover_page_list.dart';
+import 'package:cover_page/features/personalization/screens/widgets/cover_page_dropdown.dart';
+import 'package:cover_page/features/personalization/screens/widgets/university_dropdown.dart';
 import 'package:cover_page/utils/constants/sizes.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,8 +17,8 @@ class InfoFillUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<DateController>();
     log('Widget rebuild');
+    final dateController = Get.find<DateController>();
 
     return Scaffold(
       appBar: AppBar(
@@ -48,66 +48,11 @@ class InfoFillUpScreen extends StatelessWidget {
           child: Column(
             children: [
               /// CoverPage & University
-              Row(
+              const Row(
                 children: [
-                  Expanded(
-                    child: DropdownButtonFormField2<String>(
-                      // value: CoverPageList.coverList[0],
-                      items: CoverPageList.coverList.map(
-                        (coverPageType) {
-                          return DropdownMenuItem<String>(
-                            value: coverPageType,
-                            child: Text(coverPageType),
-                          );
-                        },
-                      ).toList(),
-                      onChanged: (coverPageType) {},
-                      // log(val.toString());
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      decoration: const InputDecoration(
-                        label: Text('  CoverPage'),
-                      ),
-                      dropdownStyleData: DropdownStyleData(
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(CSizes.borderRadiusMd),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: CSizes.spaceBtwInputFields),
-                  Expanded(
-                    child: DropdownButtonFormField2<String>(
-                      // value: CoverPageList.coverList[0],
-                      items: CoverPageList.uniVarsityList.map(
-                        (varsity) {
-                          return DropdownMenuItem<String>(
-                            value: varsity['name'],
-                            child: Row(
-                              children: [
-                                Image.asset(varsity['image'], width: 25),
-                                const SizedBox(width: 14),
-                                Text(varsity['name']),
-                              ],
-                            ),
-                          );
-                        },
-                      ).toList(),
-                      onChanged: (varsity) {},
-                      // log(val.toString());
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      decoration: const InputDecoration(
-                        label: Text('  University'),
-                      ),
-                      dropdownStyleData: DropdownStyleData(
-                        maxHeight: 200,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(CSizes.borderRadiusMd),
-                        ),
-                      ),
-                    ),
-                  ),
+                  CoverPageDropDown(),
+                  SizedBox(width: CSizes.spaceBtwInputFields),
+                  UniversityDropDown(),
                 ],
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
@@ -227,13 +172,15 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Date',
                       prefixIcon: Iconsax.calendar_search,
-                      onTap: () => controller.datePicker(context),
-                      controller: controller.dateTEController,
+                      onTap: () => dateController.datePicker(context),
+                      controller: dateController.dateTEController,
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: CSizes.spaceBtwSections),
+
+              /// Generate Pdf Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

@@ -1,3 +1,4 @@
+import 'package:cover_page/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CElevatedButtonTheme {
@@ -9,8 +10,8 @@ class CElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
-      side: const BorderSide(color: Colors.blue),
+      backgroundColor: CColors.buttonSecondary,
+      side: const BorderSide(color: CColors.buttonSecondary),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontSize: 16,
@@ -27,8 +28,8 @@ class CElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
-      side: const BorderSide(color: Colors.blue),
+      backgroundColor: CColors.buttonPrimary,
+      side: const BorderSide(color: CColors.buttonPrimary),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
         fontSize: 16,

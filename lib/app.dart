@@ -14,7 +14,7 @@ class CoverPageApp extends StatelessWidget {
       initialBinding: ControllerBinder(),
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      // themeMode: isDark,
       home: const InfoFillUpScreen(),
     );
   }
