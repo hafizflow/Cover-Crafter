@@ -9,4 +9,6 @@ class CImages {
   static const String bracLogo = "assets/images/university_logo/BRAC.png";
   static const String iubLogo = "assets/images/university_logo/IUB.png";
   static const String ewuLogo = "assets/images/university_logo/EWU.png";
+
+  static const String myUniversity = "assets/images/university_logo/my_diu.png";
 }

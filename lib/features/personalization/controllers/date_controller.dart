@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../utils/formatters/date_formatter.dart';
 
 class DateController extends GetxController {
-  TextEditingController dateTEController = TextEditingController();
+  TextEditingController submissionDateController = TextEditingController();
 
   Future<void> datePicker(BuildContext context) async {
     DateTime? picked = await showDatePicker(
@@ -16,13 +16,13 @@ class DateController extends GetxController {
 
     if (picked != null) {
       String formattedDate = CFormatter.formatDate(picked);
-      dateTEController.text = formattedDate;
+      submissionDateController.text = formattedDate;
     }
   }
 
   @override
   void dispose() {
     super.dispose();
-    dateTEController.dispose();
+    submissionDateController.dispose();
   }
 }

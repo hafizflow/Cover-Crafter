@@ -1,8 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants/cover_page_list.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/cover_page_list.dart';
+import '../../../../../utils/constants/sizes.dart';
 
 class CoverPageDropDown extends StatelessWidget {
   const CoverPageDropDown({
