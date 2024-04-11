@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cover_page/common/widgets/info_fillup/section_divider.dart';
 import 'package:cover_page/features/personalization/controllers/date_controller.dart';
+import 'package:cover_page/features/personalization/controllers/field_controller.dart';
 import 'package:cover_page/features/personalization/controllers/form_controller.dart';
 import 'package:cover_page/features/personalization/screens/pdf_view_screen.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/cover_page_dropdown.dart';
@@ -52,7 +53,7 @@ class InfoFillUpScreen extends StatelessWidget {
                   Expanded(
                     child: CTextFormField(
                       label: 'Course Code',
-                      prefixIcon: Iconsax.code,
+                      prefixIcon: Iconsax.scroll,
                       controller: formController.courseCodeController,
                     ),
                   ),
@@ -60,7 +61,7 @@ class InfoFillUpScreen extends StatelessWidget {
                   Expanded(
                     child: CTextFormField(
                       label: 'Course Name',
-                      prefixIcon: Iconsax.edit,
+                      prefixIcon: Iconsax.code,
                       controller: formController.courseNameController,
                     ),
                   ),
@@ -68,25 +69,36 @@ class InfoFillUpScreen extends StatelessWidget {
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
 
-              /// Experiment No & Name
-              Row(
-                children: [
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Experiment No',
-                      prefixIcon: Iconsax.note,
-                      controller: formController.experimentNoController,
-                    ),
-                  ),
-                  const SizedBox(width: CSizes.spaceBtwInputFields),
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Experiment Name',
-                      prefixIcon: Iconsax.lamp_charge,
-                      controller: formController.experimentNameController,
-                    ),
-                  ),
-                ],
+              GetBuilder<FieldController>(
+                builder: (controller) {
+                  if (controller.isAssignment) {
+                    log(controller.isAssignment.toString());
+                    return const CTextFormField(
+                      label: 'Title',
+                      prefixIcon: Iconsax.edit,
+                    );
+                  }
+                  log(controller.isAssignment.toString());
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: CTextFormField(
+                          label: 'Experiment No',
+                          prefixIcon: Iconsax.note,
+                          controller: formController.experimentNoController,
+                        ),
+                      ),
+                      const SizedBox(width: CSizes.spaceBtwInputFields),
+                      Expanded(
+                        child: CTextFormField(
+                          label: 'Experiment Name',
+                          prefixIcon: Iconsax.lamp_charge,
+                          controller: formController.experimentNameController,
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
 
               /// Teacher Name, Department &
@@ -148,7 +160,7 @@ class InfoFillUpScreen extends StatelessWidget {
                       controller: formController.studentSectionController,
                     ),
                   ),
-                  SizedBox(width: CSizes.spaceBtwInputFields),
+                  const SizedBox(width: CSizes.spaceBtwInputFields),
                   Expanded(
                     child: CTextFormField(
                       label: 'Department',
@@ -186,7 +198,10 @@ class InfoFillUpScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => const PDFViewScreen()),
+                  onPressed: () {
+                    Get.to(() => const PDFViewScreen());
+                    log(formController.coverPageController.text);
+                  },
                   child: const Text('Generate PDF'),
                 ),
               )
@@ -197,3 +212,14 @@ class InfoFillUpScreen extends StatelessWidget {
     );
   }
 }
+
+// GetBuilder<FieldController>(
+// builder: (fieldController) {
+// return fieldController.isAssignment
+// ? const CTextFormField(
+// label: 'Title',
+// prefixIcon: Iconsax.edit,
+// )
+//
+// /// Experiment No & Name
+// :

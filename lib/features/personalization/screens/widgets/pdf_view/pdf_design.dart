@@ -16,7 +16,12 @@ class PdfDesign {
   Future<Uint8List> generatePdf(final PdfPageFormat pageFormat) async {
     final pdf = pw.Document();
 
-    final img = await rootBundle.load(CImages.bupLogo);
+    final img = await rootBundle.load(
+      formController.universityLogoController.text == ""
+          ? CImages.myUniversity
+          : formController.universityLogoController.text,
+    );
+
     final imageBytes = img.buffer.asUint8List();
     pw.Image image = pw.Image(pw.MemoryImage(imageBytes));
 
@@ -32,7 +37,10 @@ class PdfDesign {
                   pw.Container(
                       height: 85, child: image, alignment: pw.Alignment.center),
                   pw.SizedBox(height: PDFSpacing.spaceBtwSection),
-                  pw.Text('Assignment', style: PDFTextStyle.headingTextStyle),
+                  pw.Text(
+                    formController.coverPageController.text,
+                    style: PDFTextStyle.headingTextStyle,
+                  ),
                 ],
               ),
               pw.Padding(
@@ -125,7 +133,8 @@ class PdfDesign {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text: ', DIU',
+                            text:
+                                ', ${formController.universityShortNameController.text}',
                             style: PDFTextStyle.boldTextStyle,
                           ),
                         ],
@@ -210,7 +219,7 @@ class PdfDesign {
                     ),
                     pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                     pw.Text(
-                      'Daffodil Internationl University',
+                      formController.universityFullNameController.text,
                       style: PDFTextStyle.boldTextStyle,
                     ),
                   ],

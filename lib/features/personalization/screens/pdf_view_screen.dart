@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:printing/printing.dart';
 
+import '../controllers/date_controller.dart';
+import '../controllers/form_controller.dart';
+
 class PDFViewScreen extends StatefulWidget {
   const PDFViewScreen({super.key});
 
@@ -16,6 +19,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
   final pdfInit = Get.find<PDFController>();
   final showPdf = OpenPdf();
   final pdfDesign = PdfDesign();
+  final formController = Get.find<FormController>();
 
   @override
   void initState() {
@@ -35,7 +39,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
         ),
       ),
       body: PdfPreview(
-        pdfFileName: 'Cover Page',
+        pdfFileName: formController.courseNameController.text,
         maxPageWidth: double.infinity,
         build: pdfDesign.generatePdf,
         canDebug: false,

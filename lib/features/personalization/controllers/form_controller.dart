@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 
 class FormController extends GetxController {
   TextEditingController coverPageController = TextEditingController();
-  TextEditingController universityController = TextEditingController();
+  TextEditingController universityLogoController = TextEditingController();
+  TextEditingController universityShortNameController = TextEditingController();
+  TextEditingController universityFullNameController = TextEditingController();
   TextEditingController courseCodeController = TextEditingController();
   TextEditingController courseNameController = TextEditingController();
   TextEditingController experimentNoController = TextEditingController();
@@ -23,7 +25,9 @@ class FormController extends GetxController {
   void dispose() {
     super.dispose();
     courseCodeController.dispose();
-    universityController.dispose();
+    universityLogoController.dispose();
+    universityShortNameController.dispose();
+    universityFullNameController.dispose();
     courseCodeController.dispose();
     courseNameController.dispose();
     experimentNoController.dispose();
