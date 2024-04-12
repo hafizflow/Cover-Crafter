@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/cover_page_list.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../controllers/form_controller.dart';
+import '../../../controllers/form/form_controller.dart';
 
 class UniversityDropDown extends StatelessWidget {
   const UniversityDropDown({

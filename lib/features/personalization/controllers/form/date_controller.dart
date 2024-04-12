@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../utils/formatters/date_formatter.dart';
+import '../../../../utils/formatters/date_formatter.dart';
 
 class DateController extends GetxController {
   static DateController get instance => Get.find();

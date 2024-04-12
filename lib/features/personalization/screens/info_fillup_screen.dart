@@ -1,9 +1,7 @@
 import 'dart:developer';
 
 import 'package:cover_page/common/widgets/info_fillup/section_divider.dart';
-import 'package:cover_page/features/personalization/controllers/date_controller.dart';
-import 'package:cover_page/features/personalization/controllers/field_controller.dart';
-import 'package:cover_page/features/personalization/controllers/form_controller.dart';
+import 'package:cover_page/features/personalization/controllers/form/date_controller.dart';
 import 'package:cover_page/features/personalization/screens/pdf_view_screen.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/cover_page_dropdown.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/toggle_theme_button.dart';
@@ -14,6 +12,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../common/widgets/info_fillup/text_form_field.dart';
+import '../controllers/form/field_controller.dart';
+import '../controllers/form/form_controller.dart';
 
 class InfoFillUpScreen extends StatefulWidget {
   const InfoFillUpScreen({super.key});

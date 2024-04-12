@@ -1,14 +1,16 @@
 import 'package:circular_menu/circular_menu.dart';
-import 'package:cover_page/features/personalization/controllers/pdf_controller.dart';
+import 'package:cover_page/features/personalization/controllers/form/form_controller.dart';
+import 'package:cover_page/features/personalization/controllers/pdf/pdf_controller.dart';
+import 'package:cover_page/features/personalization/controllers/pdf/pdf_theme_controller.dart';
 import 'package:cover_page/features/personalization/screens/widgets/pdf_view/open_pdf.dart';
-import 'package:cover_page/features/personalization/screens/widgets/pdf_view/pdf_design.dart';
+import 'package:cover_page/features/personalization/screens/widgets/pdf_view/pdf_theme/pdf_first.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:printing/printing.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../controllers/form_controller.dart';
 
 class PDFViewScreen extends StatefulWidget {
   const PDFViewScreen({super.key});
@@ -19,10 +21,12 @@ class PDFViewScreen extends StatefulWidget {
 
 class _PDFViewScreenState extends State<PDFViewScreen> {
   final pdfInit = Get.find<PDFController>();
-  final formController = FormController.instance;
-
+  final pdfThemeController = PdfThemeController.instance;
+  final form = FormController.instance;
   final showPdf = OpenPdf();
-  final pdfDesign = PdfDesign();
+
+  final first = PdfFirst();
+  late String? pdfName = form.courseNameController.text.trim();
 
   @override
   void initState() {
@@ -48,33 +52,42 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
         backgroundColor:
             isDark ? CColors.buttonPrimary : CColors.buttonSecondary,
       ),
-      body: PdfPreview(
-        pdfFileName: formController.courseNameController.text,
-        maxPageWidth: double.infinity,
-        build: pdfDesign.generatePdf,
-        canDebug: false,
-        canChangeOrientation: false,
-        previewPageMargin: const EdgeInsets.symmetric(
-          horizontal: 6,
-          vertical: 8,
-        ),
-        actions: [
-          IconButton(
-            padding: EdgeInsets.zero,
-            onPressed: () => showPdf.openPdf(),
-            icon: const Icon(Icons.file_download_outlined),
+      body: GetBuilder<PdfThemeController>(builder: (theme) {
+        return PdfPreview(
+          pdfFileName: pdfName,
+          maxPageWidth: double.infinity,
+          build: theme.updateViewPage(),
+          canDebug: false,
+          canChangePageFormat: false,
+          canChangeOrientation: false,
+          previewPageMargin: const EdgeInsets.symmetric(
+            horizontal: 6,
+            vertical: 8,
           ),
-        ],
-      ),
+          actions: [
+            IconButton(
+              padding: EdgeInsets.zero,
+              onPressed: () => showPdf.openPdf(),
+              icon: const Icon(Icons.file_download_outlined),
+            ),
+          ],
+        );
+      }),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 50),
         child: CircularMenu(
           radius: 80,
           alignment: Alignment.bottomRight,
           items: [
-            CircularMenuItem(icon: Icons.home, onTap: () {}),
-            CircularMenuItem(icon: Icons.search, onTap: () {}),
-            CircularMenuItem(icon: Icons.settings, onTap: () {}),
+            CircularMenuItem(
+                icon: FontAwesomeIcons.one,
+                onTap: () => pdfThemeController.setPdfTheme(1)),
+            CircularMenuItem(
+                icon: FontAwesomeIcons.two,
+                onTap: () => pdfThemeController.setPdfTheme(2)),
+            CircularMenuItem(
+                icon: FontAwesomeIcons.three,
+                onTap: () => pdfThemeController.setPdfTheme(3)),
           ],
         ),
       ),

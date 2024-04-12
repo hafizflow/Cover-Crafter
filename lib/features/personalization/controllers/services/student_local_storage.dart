@@ -1,6 +1,5 @@
-import 'package:cover_page/features/personalization/controllers/form_controller.dart';
-
 import '../../../../utils/local_storage/local_storage.dart';
+import '../form/form_controller.dart';
 
 class StudentLocalStorage {
   final _storage = CLocalStorage();

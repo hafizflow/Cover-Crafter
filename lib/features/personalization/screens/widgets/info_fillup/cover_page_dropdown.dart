@@ -1,10 +1,10 @@
-import 'package:cover_page/features/personalization/controllers/field_controller.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/cover_page_list.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../controllers/form_controller.dart';
+import '../../../controllers/form/field_controller.dart';
+import '../../../controllers/form/form_controller.dart';
 
 class CoverPageDropDown extends StatelessWidget {
   const CoverPageDropDown({

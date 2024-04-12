@@ -30,6 +30,7 @@ dependencies:
 
   # Icon Packages
   iconsax: ^0.0.8
+  font_awesome_flutter: ^10.7.0
   cupertino_icons: ^1.0.6
 
   # Stage Management and Local Storage Package

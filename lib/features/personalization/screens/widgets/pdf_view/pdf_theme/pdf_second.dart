@@ -2,13 +2,13 @@ import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
-import '../../../../../common/styles/pdf_view/pdf_spacing.dart';
-import '../../../../../common/styles/pdf_view/pdf_text_style.dart';
-import '../../../../../utils/constants/image_strings.dart';
-import '../../../controllers/date_controller.dart';
-import '../../../controllers/form_controller.dart';
+import '../../../../../../common/styles/pdf_view/pdf_spacing.dart';
+import '../../../../../../common/styles/pdf_view/pdf_text_style.dart';
+import '../../../../../../utils/constants/image_strings.dart';
+import '../../../../controllers/form/date_controller.dart';
+import '../../../../controllers/form/form_controller.dart';
 
-class PdfDesign {
+class PdfSecond {
   final formController = FormController.instance;
   final dateController = DateController.instance;
 
@@ -37,7 +37,7 @@ class PdfDesign {
                       height: 85, child: image, alignment: pw.Alignment.center),
                   pw.SizedBox(height: PDFSpacing.spaceBtwSection),
                   pw.Text(
-                    formController.coverPageController.text,
+                    "Hafiz Hello",
                     style: PDFTextStyle.headingTextStyle,
                   ),
                 ],
