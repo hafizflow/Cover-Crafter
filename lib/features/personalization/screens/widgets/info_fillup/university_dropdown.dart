@@ -1,7 +1,6 @@
 import 'package:cover_page/features/personalization/controllers/services/university.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../../utils/constants/cover_page_list.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -14,7 +13,7 @@ class UniversityDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formController = Get.find<FormController>();
+    final formController = FormController.instance;
     final university = University();
 
     return Expanded(

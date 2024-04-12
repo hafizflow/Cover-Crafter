@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FormController extends GetxController {
+  static FormController get instance => Get.find();
+
   TextEditingController coverPageController = TextEditingController();
   TextEditingController universityLogoController = TextEditingController();
   TextEditingController universityShortNameController = TextEditingController();
   TextEditingController universityFullNameController = TextEditingController();
   TextEditingController courseCodeController = TextEditingController();
   TextEditingController courseNameController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+
   TextEditingController experimentNoController = TextEditingController();
   TextEditingController experimentNameController = TextEditingController();
   // Teacher
@@ -18,7 +23,7 @@ class FormController extends GetxController {
   TextEditingController studentNameController = TextEditingController();
   TextEditingController studentIdController = TextEditingController();
   TextEditingController studentSectionController = TextEditingController();
-  TextEditingController studentDepartmentController = TextEditingController();
+  TextEditingController studentDeptController = TextEditingController();
   TextEditingController studentSemesterController = TextEditingController();
 
   @override
@@ -30,6 +35,7 @@ class FormController extends GetxController {
     universityFullNameController.dispose();
     courseCodeController.dispose();
     courseNameController.dispose();
+    titleController.dispose();
     experimentNoController.dispose();
     experimentNameController.dispose();
     teacherNameController.dispose();
@@ -38,7 +44,7 @@ class FormController extends GetxController {
     studentNameController.dispose();
     studentIdController.dispose();
     studentSectionController.dispose();
-    studentDepartmentController.dispose();
+    studentDeptController.dispose();
     studentSemesterController.dispose();
   }
 }

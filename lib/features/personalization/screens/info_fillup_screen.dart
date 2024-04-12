@@ -15,14 +15,25 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../common/widgets/info_fillup/text_form_field.dart';
 
-class InfoFillUpScreen extends StatelessWidget {
+class InfoFillUpScreen extends StatefulWidget {
   const InfoFillUpScreen({super.key});
+
+  @override
+  State<InfoFillUpScreen> createState() => _InfoFillUpScreenState();
+}
+
+class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
+  final dateController = DateController.instance;
+  final form = FormController.instance;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     log('Widget rebuild');
-    final dateController = Get.find<DateController>();
-    final formController = Get.find<FormController>();
 
     return Scaffold(
       appBar: AppBar(
@@ -54,7 +65,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Course Code',
                       prefixIcon: Iconsax.scroll,
-                      controller: formController.courseCodeController,
+                      controller: form.courseCodeController,
                     ),
                   ),
                   const SizedBox(width: CSizes.spaceBtwInputFields),
@@ -62,7 +73,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Course Name',
                       prefixIcon: Iconsax.code,
-                      controller: formController.courseNameController,
+                      controller: form.courseNameController,
                     ),
                   ),
                 ],
@@ -85,7 +96,7 @@ class InfoFillUpScreen extends StatelessWidget {
                         child: CTextFormField(
                           label: 'Experiment No',
                           prefixIcon: Iconsax.note,
-                          controller: formController.experimentNoController,
+                          controller: form.experimentNoController,
                         ),
                       ),
                       const SizedBox(width: CSizes.spaceBtwInputFields),
@@ -93,7 +104,7 @@ class InfoFillUpScreen extends StatelessWidget {
                         child: CTextFormField(
                           label: 'Experiment Name',
                           prefixIcon: Iconsax.lamp_charge,
-                          controller: formController.experimentNameController,
+                          controller: form.experimentNameController,
                         ),
                       ),
                     ],
@@ -106,7 +117,7 @@ class InfoFillUpScreen extends StatelessWidget {
               CTextFormField(
                 label: 'Teacher Name',
                 prefixIcon: Iconsax.teacher,
-                controller: formController.teacherNameController,
+                controller: form.teacherNameController,
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               Row(
@@ -115,7 +126,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Department',
                       prefixIcon: Iconsax.courthouse,
-                      controller: formController.teacherDepartmentController,
+                      controller: form.teacherDepartmentController,
                     ),
                   ),
                   const SizedBox(width: CSizes.spaceBtwInputFields),
@@ -123,7 +134,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Academic Rank',
                       prefixIcon: Iconsax.activity,
-                      controller: formController.teacherAcademicRankController,
+                      controller: form.teacherAcademicRankController,
                     ),
                   ),
                 ],
@@ -137,7 +148,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Name',
                       prefixIcon: Iconsax.user_edit,
-                      controller: formController.studentNameController,
+                      controller: form.studentNameController,
                     ),
                   ),
                   const SizedBox(width: CSizes.spaceBtwInputFields),
@@ -145,7 +156,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Student-ID',
                       prefixIcon: Iconsax.personalcard,
-                      controller: formController.studentIdController,
+                      controller: form.studentIdController,
                     ),
                   ),
                 ],
@@ -157,7 +168,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Section',
                       prefixIcon: Iconsax.layer,
-                      controller: formController.studentSectionController,
+                      controller: form.studentSectionController,
                     ),
                   ),
                   const SizedBox(width: CSizes.spaceBtwInputFields),
@@ -165,7 +176,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Department',
                       prefixIcon: Iconsax.pen_tool,
-                      controller: formController.studentDepartmentController,
+                      controller: form.studentDeptController,
                     ),
                   ),
                 ],
@@ -177,7 +188,7 @@ class InfoFillUpScreen extends StatelessWidget {
                     child: CTextFormField(
                       label: 'Semester',
                       prefixIcon: Iconsax.keyboard,
-                      controller: formController.studentSemesterController,
+                      controller: form.studentSemesterController,
                     ),
                   ),
                   const SizedBox(width: CSizes.spaceBtwInputFields),
@@ -200,7 +211,6 @@ class InfoFillUpScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Get.to(() => const PDFViewScreen());
-                    log(formController.coverPageController.text);
                   },
                   child: const Text('Generate PDF'),
                 ),
@@ -212,14 +222,3 @@ class InfoFillUpScreen extends StatelessWidget {
     );
   }
 }
-
-// GetBuilder<FieldController>(
-// builder: (fieldController) {
-// return fieldController.isAssignment
-// ? const CTextFormField(
-// label: 'Title',
-// prefixIcon: Iconsax.edit,
-// )
-//
-// /// Experiment No & Name
-// :

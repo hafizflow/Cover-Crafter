@@ -14,7 +14,7 @@ class CAppTheme {
     brightness: Brightness.light,
     // scaffoldBackgroundColor: CColors.light,
     scaffoldBackgroundColor: CColors.white,
-    primaryColor: CColors.primary,
+    primaryColor: CColors.buttonSecondary,
     fontFamily: 'Poppins',
     useMaterial3: true,
     textTheme: CTextTheme.lightTextTheme,
@@ -26,7 +26,7 @@ class CAppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: CColors.dark,
-    primaryColor: CColors.primary,
+    primaryColor: CColors.buttonPrimary,
     fontFamily: 'Poppins',
     useMaterial3: true,
     textTheme: CTextTheme.darkTextTheme,

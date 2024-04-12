@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'form_controller.dart';
 
 class FieldController extends GetxController {
-  final formController = Get.find<FormController>();
+  static FieldController get instance => Get.find();
+
+  final formController = FormController.instance;
   bool _isAssignment = true;
   bool get isAssignment => _isAssignment;
 

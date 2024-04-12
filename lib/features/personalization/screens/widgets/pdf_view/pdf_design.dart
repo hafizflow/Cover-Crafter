@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
@@ -10,8 +9,8 @@ import '../../../controllers/date_controller.dart';
 import '../../../controllers/form_controller.dart';
 
 class PdfDesign {
-  final formController = Get.find<FormController>();
-  final dateController = Get.find<DateController>();
+  final formController = FormController.instance;
+  final dateController = DateController.instance;
 
   Future<Uint8List> generatePdf(final PdfPageFormat pageFormat) async {
     final pdf = pw.Document();
@@ -79,32 +78,57 @@ class PdfDesign {
 
                     pw.SizedBox(height: PDFSpacing.spaceBtwSection),
 
-                    /// Experiment No and Name
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Experiment No : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.experimentNoController.text,
-                            style: PDFTextStyle.normalTextStyle,
+                    formController.experimentNameController.text.isEmpty
+                        ?
+
+                        /// Title
+                        pw.RichText(
+                            text: pw.TextSpan(
+                              text: 'Title : ',
+                              style: PDFTextStyle.boldTextStyle,
+                              children: [
+                                pw.TextSpan(
+                                  text: formController.titleController.text,
+                                  style: PDFTextStyle.normalTextStyle,
+                                ),
+                              ],
+                            ),
+                          )
+                        :
+
+                        /// Experiment No and Name
+                        pw.Column(
+                            crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            children: [
+                              pw.RichText(
+                                text: pw.TextSpan(
+                                  text: 'Experiment No : ',
+                                  style: PDFTextStyle.boldTextStyle,
+                                  children: [
+                                    pw.TextSpan(
+                                      text: formController
+                                          .experimentNoController.text,
+                                      style: PDFTextStyle.normalTextStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                              pw.RichText(
+                                text: pw.TextSpan(
+                                  text: 'Experiment Name : ',
+                                  style: PDFTextStyle.boldTextStyle,
+                                  children: [
+                                    pw.TextSpan(
+                                      text: formController
+                                          .experimentNameController.text,
+                                      style: PDFTextStyle.normalTextStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Experiment Name : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.experimentNameController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
 
                     /// Teacher information
                     pw.SizedBox(height: 30),
@@ -210,8 +234,7 @@ class PdfDesign {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text:
-                                formController.studentDepartmentController.text,
+                            text: formController.studentDeptController.text,
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],

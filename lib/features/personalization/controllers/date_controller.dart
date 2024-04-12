@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import '../../../utils/formatters/date_formatter.dart';
 
 class DateController extends GetxController {
+  static DateController get instance => Get.find();
+
   TextEditingController submissionDateController = TextEditingController();
 
   Future<void> datePicker(BuildContext context) async {
