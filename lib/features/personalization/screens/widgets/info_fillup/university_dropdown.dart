@@ -21,7 +21,9 @@ class UniversityDropDown extends StatelessWidget {
 
     return Expanded(
       child: DropdownButtonFormField2<String>(
-        // value: CoverPageList.uniVarsityList[0]['id'],
+        value: formController.studentUniversityIdController.text.isEmpty
+            ? null
+            : CoverPageList.uniVarsityList[0]['id'],
         items: CoverPageList.uniVarsityList.map(
           (varsity) {
             return DropdownMenuItem<String>(
@@ -37,7 +39,8 @@ class UniversityDropDown extends StatelessWidget {
           },
         ).toList(),
         onChanged: (id) {
-          // formController.studentUniversityIdController.text = id.toString();
+          formController.studentUniversityIdController.text = id.toString();
+          // log('University Id: ${formController.studentUniversityIdController.text}');
 
           formController.universityLogoController.text =
               university.getUniversityLogo(

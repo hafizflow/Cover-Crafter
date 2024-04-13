@@ -215,6 +215,7 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                   onPressed: () {
                     Get.to(() => const PDFViewScreen());
                     localStorage.setStudentInfo();
+                    log(form.studentUniversityIdController.text);
                   },
                   child: const Text('Generate PDF'),
                 ),

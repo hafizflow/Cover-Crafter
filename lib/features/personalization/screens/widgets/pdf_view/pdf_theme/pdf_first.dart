@@ -24,6 +24,9 @@ class PdfFirst {
     final imageBytes = img.buffer.asUint8List();
     pw.Image image = pw.Image(pw.MemoryImage(imageBytes));
 
+    // final font = await rootBundle.load("assets/fonts/open-sans.regular.ttf");
+    // final ttf = Font.ttf(font);
+
     pdf.addPage(
       pw.Page(
         pageFormat: PdfPageFormat.a4,
