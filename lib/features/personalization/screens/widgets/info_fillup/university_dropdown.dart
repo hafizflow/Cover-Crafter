@@ -1,4 +1,6 @@
 import 'package:cover_page/features/personalization/controllers/services/university.dart';
+import 'package:cover_page/utils/constants/colors.dart';
+import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +17,7 @@ class UniversityDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     final formController = FormController.instance;
     final university = University();
+    bool isDark = CHelperFunctions.isDarkMode(context);
 
     return Expanded(
       child: DropdownButtonFormField2<String>(
@@ -57,6 +60,7 @@ class UniversityDropDown extends StatelessWidget {
           maxHeight: 200,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(CSizes.borderRadiusMd),
+            color: isDark ? Colors.grey.shade900 : CColors.softGrey,
           ),
         ),
       ),

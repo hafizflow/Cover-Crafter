@@ -19,7 +19,7 @@ dependencies:
   fluttertoast: ^8.2.4
   another_flushbar: ^1.12.30
   dropdown_button2: ^2.3.9
-  circular_menu: ^2.0.1
+  circular_menu: ^3.0.0
 
   # Pdf Packages
   pdf: ^3.10.8
@@ -51,6 +51,7 @@ flutter:
   # - - - - - - - - LOCAL ASSETS - - - - - - - - #
   assets:
     - assets/images/university_logo/
+    - assets/logos/
 
 
     # - - - - - - - - LOCAL FONTS - - - - - - - - #

@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:printing/printing.dart';
 
 import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/sizes.dart';
 
 class PDFViewScreen extends StatefulWidget {
   const PDFViewScreen({super.key});
@@ -54,7 +55,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
       ),
       body: GetBuilder<PdfThemeController>(builder: (theme) {
         return PdfPreview(
-          pdfFileName: pdfName,
+          pdfFileName: 'pdfName',
           maxPageWidth: double.infinity,
           build: theme.updateViewPage(),
           canDebug: false,
@@ -80,12 +81,15 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
           alignment: Alignment.bottomRight,
           items: [
             CircularMenuItem(
+                iconSize: CSizes.iconSm + 4,
                 icon: FontAwesomeIcons.one,
                 onTap: () => pdfThemeController.setPdfTheme(1)),
             CircularMenuItem(
+                iconSize: CSizes.iconSm + 4,
                 icon: FontAwesomeIcons.two,
                 onTap: () => pdfThemeController.setPdfTheme(2)),
             CircularMenuItem(
+                iconSize: CSizes.iconSm + 4,
                 icon: FontAwesomeIcons.three,
                 onTap: () => pdfThemeController.setPdfTheme(3)),
           ],

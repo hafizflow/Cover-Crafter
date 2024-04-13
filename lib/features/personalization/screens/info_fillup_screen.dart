@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cover_page/common/widgets/info_fillup/section_divider.dart';
 import 'package:cover_page/features/personalization/controllers/form/date_controller.dart';
 import 'package:cover_page/features/personalization/screens/pdf_view_screen.dart';
+import 'package:cover_page/features/personalization/screens/widgets/info_fillup/app_drawer.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/cover_page_dropdown.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/toggle_theme_button.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/university_dropdown.dart';
@@ -23,7 +24,7 @@ class InfoFillUpScreen extends StatefulWidget {
 }
 
 class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
-  final dateController = DateController.instance;
+  final date = DateController.instance;
   final form = FormController.instance;
 
   @override
@@ -33,13 +34,12 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    log('Widget rebuild');
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Generate Cover Page"),
         actions: const [ToggleThemeButton()],
       ),
+      drawer: const AppDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -196,8 +196,8 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                     child: CTextFormField(
                       label: 'Date',
                       prefixIcon: Iconsax.calendar_search,
-                      onTap: () => dateController.datePicker(context),
-                      controller: dateController.submissionDateController,
+                      onTap: () => date.datePicker(context),
+                      controller: date.submissionDateController,
                       readOnly: true,
                     ),
                   ),

@@ -1,3 +1,5 @@
+import 'package:cover_page/utils/constants/colors.dart';
+import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +17,7 @@ class CoverPageDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     final formController = FormController.instance;
     final fieldController = FieldController.instance;
+    bool isDark = CHelperFunctions.isDarkMode(context);
 
     return Expanded(
       child: DropdownButtonFormField2<String>(
@@ -39,6 +42,7 @@ class CoverPageDropDown extends StatelessWidget {
         dropdownStyleData: DropdownStyleData(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(CSizes.borderRadiusMd),
+            color: isDark ? Colors.grey.shade900 : CColors.softGrey,
           ),
         ),
       ),
