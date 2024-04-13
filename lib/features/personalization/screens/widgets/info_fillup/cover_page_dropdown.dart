@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cover_page/utils/constants/colors.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -7,6 +9,7 @@ import '../../../../../utils/constants/cover_page_list.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/form/field_controller.dart';
 import '../../../controllers/form/form_controller.dart';
+import '../../../controllers/services/university.dart';
 
 class CoverPageDropDown extends StatelessWidget {
   const CoverPageDropDown({
@@ -15,13 +18,20 @@ class CoverPageDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formController = FormController.instance;
+    final form = FormController.instance;
     final fieldController = FieldController.instance;
+    // final university = University();
     bool isDark = CHelperFunctions.isDarkMode(context);
+
+    log(form.coverPageController.text);
 
     return Expanded(
       child: DropdownButtonFormField2<String>(
-        // value: CoverPageList.coverList[0],
+        // value: form.coverPageController.text == ""
+        //     ? null
+        //     : CoverPageList.coverList[
+        //         university.getCoverPageType(form.coverPageController.text)],
+
         items: CoverPageList.coverList.map(
           (coverPageType) {
             return DropdownMenuItem<String>(
@@ -31,7 +41,7 @@ class CoverPageDropDown extends StatelessWidget {
           },
         ).toList(),
         onChanged: (coverPageType) {
-          formController.coverPageController.text = coverPageType!;
+          form.coverPageController.text = coverPageType!;
           fieldController.fieldShow();
         },
         // log(val.toString());

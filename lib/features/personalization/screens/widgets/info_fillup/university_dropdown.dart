@@ -15,15 +15,20 @@ class UniversityDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formController = FormController.instance;
+    final form = FormController.instance;
     final university = University();
     bool isDark = CHelperFunctions.isDarkMode(context);
 
+    // log('University Id: ${form.studentUniversityIdController.text}');
+
     return Expanded(
       child: DropdownButtonFormField2<String>(
-        value: formController.studentUniversityIdController.text.isEmpty
+        /// Getting last given university
+        value: form.studentUniversityIdController.text == ""
             ? null
-            : CoverPageList.uniVarsityList[0]['id'],
+            : CoverPageList.uniVarsityList[university.getUniversityId(
+                form.studentUniversityIdController.text)]['id'],
+
         items: CoverPageList.uniVarsityList.map(
           (varsity) {
             return DropdownMenuItem<String>(
@@ -39,20 +44,19 @@ class UniversityDropDown extends StatelessWidget {
           },
         ).toList(),
         onChanged: (id) {
-          formController.studentUniversityIdController.text = id.toString();
-          // log('University Id: ${formController.studentUniversityIdController.text}');
+          form.studentUniversityIdController.text = id.toString();
+          // log('University Id: ${form.studentUniversityIdController.text}');
 
-          formController.universityLogoController.text =
-              university.getUniversityLogo(
+          form.universityLogoController.text = university.getUniversityLogo(
             id.toString(),
           );
 
-          formController.universityShortNameController.text =
+          form.universityShortNameController.text =
               university.getUniversityShortName(
             id.toString(),
           );
 
-          formController.universityFullNameController.text =
+          form.universityFullNameController.text =
               university.getUniversityFullName(
             id.toString(),
           );

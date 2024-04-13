@@ -111,7 +111,18 @@ class University {
       case "10":
         return 9;
       default:
-        return 10;
+        return -1;
+    }
+  }
+
+  int getCoverPageType(String cType) {
+    switch (cType) {
+      case "Assignment":
+        return 0;
+      case "Lab Report":
+        return 1;
+      default:
+        return -1;
     }
   }
 }

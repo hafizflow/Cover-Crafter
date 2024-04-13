@@ -11,6 +11,7 @@ class CTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.onTap,
     this.readOnly = false,
+    this.keyBoardType = TextInputType.text,
   });
 
   final String label;
@@ -21,6 +22,7 @@ class CTextFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final VoidCallback? onTap;
   final bool readOnly;
+  final TextInputType keyBoardType;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class CTextFormField extends StatelessWidget {
         prefixIcon: Icon(prefixIcon),
       ),
       readOnly: readOnly,
+      keyboardType: keyBoardType,
     );
   }
 }

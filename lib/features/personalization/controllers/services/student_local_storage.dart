@@ -12,17 +12,31 @@ class StudentLocalStorage {
     _storage.write('studentDepartment', form.studentDeptController.text.trim());
     _storage.write(
         'studentSemester', form.studentSemesterController.text.trim());
-    // _storage.write(
-    //     'studentUniversityId', form.studentUniversityIdController.text);
+    _storage.write(
+        'studentUniversityId', form.studentUniversityIdController.text);
+    // _storage.write('coverPageType', form.coverPageController.text);
+
+    _storage.write('universityLogo', form.universityLogoController.text);
+    _storage.write(
+        'universityShortName', form.universityShortNameController.text);
+    _storage.write(
+        'universityFullName', form.universityFullNameController.text);
   }
 
   void getStudentInfo() {
-    form.studentNameController.text = _storage.read('studentName');
-    form.studentIdController.text = _storage.read('studentId');
-    form.studentSectionController.text = _storage.read('studentSection');
-    form.studentDeptController.text = _storage.read('studentDepartment');
-    form.studentSemesterController.text = _storage.read('studentSemester');
-    // form.studentUniversityIdController.text =
-    //     _storage.read('studentUniversityId');
+    form.studentNameController.text = _storage.read('studentName') ?? "";
+    form.studentIdController.text = _storage.read('studentId') ?? "";
+    form.studentSectionController.text = _storage.read('studentSection') ?? "";
+    form.studentDeptController.text = _storage.read('studentDepartment') ?? "";
+    form.studentSemesterController.text =
+        _storage.read('studentSemester') ?? "";
+    form.studentUniversityIdController.text =
+        _storage.read('studentUniversityId') ?? "";
+    // form.coverPageController.text = _storage.read('coverPageType') ?? "";
+    form.universityLogoController.text = _storage.read('universityLogo') ?? "";
+    form.universityShortNameController.text =
+        _storage.read('universityShortName') ?? "";
+    form.universityFullNameController.text =
+        _storage.read('universityFullName') ?? "";
   }
 }

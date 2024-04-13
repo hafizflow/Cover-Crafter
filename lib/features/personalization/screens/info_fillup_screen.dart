@@ -37,190 +37,208 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Generate Cover Page"),
-        actions: const [ToggleThemeButton()],
-      ),
-      drawer: const AppDrawer(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: CSizes.defaultSpace,
-            vertical: CSizes.verticalSpace,
-          ),
-          child: Column(
-            children: [
-              /// CoverPage & University
-              const Row(
-                children: [
-                  CoverPageDropDown(),
-                  SizedBox(width: CSizes.spaceBtwInputFields),
-                  UniversityDropDown(),
-                ],
-              ),
-              const SizedBox(height: CSizes.spaceBtwInputFields),
-
-              /// Course Code & Name
-              Row(
-                children: [
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Course Code',
-                      prefixIcon: Iconsax.scroll,
-                      controller: form.courseCodeController,
-                    ),
-                  ),
-                  const SizedBox(width: CSizes.spaceBtwInputFields),
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Course Name',
-                      prefixIcon: Iconsax.code,
-                      controller: form.courseNameController,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: CSizes.spaceBtwInputFields),
-
-              GetBuilder<FieldController>(
-                builder: (controller) {
-                  if (controller.isAssignment) {
-                    log(controller.isAssignment.toString());
-                    return const CTextFormField(
-                      label: 'Title',
-                      prefixIcon: Iconsax.edit,
-                    );
-                  }
-                  log(controller.isAssignment.toString());
-                  return Row(
-                    children: [
-                      Expanded(
-                        child: CTextFormField(
-                          label: 'Experiment No',
-                          prefixIcon: Iconsax.note,
-                          controller: form.experimentNoController,
-                        ),
-                      ),
-                      const SizedBox(width: CSizes.spaceBtwInputFields),
-                      Expanded(
-                        child: CTextFormField(
-                          label: 'Experiment Name',
-                          prefixIcon: Iconsax.lamp_charge,
-                          controller: form.experimentNameController,
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-
-              /// Teacher Name, Department &
-              const CSectionDivider(dividerText: 'Faculty Information'),
-              CTextFormField(
-                label: 'Teacher Name',
-                prefixIcon: Iconsax.teacher,
-                controller: form.teacherNameController,
-              ),
-              const SizedBox(height: CSizes.spaceBtwInputFields),
-              Row(
-                children: [
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Department',
-                      prefixIcon: Iconsax.courthouse,
-                      controller: form.teacherDepartmentController,
-                    ),
-                  ),
-                  const SizedBox(width: CSizes.spaceBtwInputFields),
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Academic Rank',
-                      prefixIcon: Iconsax.activity,
-                      controller: form.teacherAcademicRankController,
-                    ),
-                  ),
-                ],
-              ),
-
-              /// Student Name, Department, Section & Semester
-              const CSectionDivider(dividerText: 'Student Information'),
-              Row(
-                children: [
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Name',
-                      prefixIcon: Iconsax.user_edit,
-                      controller: form.studentNameController,
-                    ),
-                  ),
-                  const SizedBox(width: CSizes.spaceBtwInputFields),
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Student-ID',
-                      prefixIcon: Iconsax.personalcard,
-                      controller: form.studentIdController,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: CSizes.spaceBtwInputFields),
-              Row(
-                children: [
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Section',
-                      prefixIcon: Iconsax.layer,
-                      controller: form.studentSectionController,
-                    ),
-                  ),
-                  const SizedBox(width: CSizes.spaceBtwInputFields),
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Department',
-                      prefixIcon: Iconsax.pen_tool,
-                      controller: form.studentDeptController,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: CSizes.spaceBtwInputFields),
-              Row(
-                children: [
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Semester',
-                      prefixIcon: Iconsax.keyboard,
-                      controller: form.studentSemesterController,
-                    ),
-                  ),
-                  const SizedBox(width: CSizes.spaceBtwInputFields),
-                  Expanded(
-                    child: CTextFormField(
-                      label: 'Date',
-                      prefixIcon: Iconsax.calendar_search,
-                      onTap: () => date.datePicker(context),
-                      controller: date.submissionDateController,
-                      readOnly: true,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: CSizes.spaceBtwSections),
-
-              /// Generate Pdf Button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => const PDFViewScreen());
-                    localStorage.setStudentInfo();
-                    log(form.studentUniversityIdController.text);
-                  },
-                  child: const Text('Generate PDF'),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Generate Cover Page"),
+          actions: const [ToggleThemeButton()],
+        ),
+        drawer: const AppDrawer(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: CSizes.defaultSpace,
+              vertical: CSizes.verticalSpace,
+            ),
+            child: Column(
+              children: [
+                /// CoverPage & University
+                const Row(
+                  children: [
+                    CoverPageDropDown(),
+                    SizedBox(width: CSizes.spaceBtwInputFields),
+                    UniversityDropDown(),
+                  ],
                 ),
-              )
-            ],
+                const SizedBox(height: CSizes.spaceBtwInputFields),
+
+                /// Course Code & Name
+                Row(
+                  children: [
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Course Code',
+                        prefixIcon: Iconsax.scroll,
+                        controller: form.courseCodeController,
+                        maxLength: 10,
+                      ),
+                    ),
+                    const SizedBox(width: CSizes.spaceBtwInputFields),
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Course Name',
+                        prefixIcon: Iconsax.code,
+                        controller: form.courseNameController,
+                        maxLength: 40,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: CSizes.spaceBtwInputFields),
+
+                GetBuilder<FieldController>(
+                  builder: (controller) {
+                    if (controller.isAssignment) {
+                      // log(controller.isAssignment.toString());
+                      return CTextFormField(
+                        label: 'Title',
+                        prefixIcon: Iconsax.edit,
+                        controller: form.titleController,
+                        maxLength: 100,
+                      );
+                    }
+                    // log(controller.isAssignment.toString());
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: CTextFormField(
+                            label: 'Experiment No',
+                            prefixIcon: Iconsax.note,
+                            controller: form.experimentNoController,
+                            maxLength: 6,
+                            keyBoardType: TextInputType.number,
+                          ),
+                        ),
+                        const SizedBox(width: CSizes.spaceBtwInputFields),
+                        Expanded(
+                          child: CTextFormField(
+                            label: 'Experiment Name',
+                            prefixIcon: Iconsax.lamp_charge,
+                            controller: form.experimentNameController,
+                            maxLength: 100,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+
+                /// Teacher Name, Department &
+                const CSectionDivider(dividerText: 'Faculty Information'),
+                CTextFormField(
+                  label: 'Teacher Name',
+                  prefixIcon: Iconsax.teacher,
+                  controller: form.teacherNameController,
+                  maxLength: 40,
+                ),
+                const SizedBox(height: CSizes.spaceBtwInputFields),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Department',
+                        prefixIcon: Iconsax.courthouse,
+                        controller: form.teacherDepartmentController,
+                        maxLength: 50,
+                      ),
+                    ),
+                    const SizedBox(width: CSizes.spaceBtwInputFields),
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Academic Rank',
+                        prefixIcon: Iconsax.activity,
+                        controller: form.teacherAcademicRankController,
+                        maxLength: 40,
+                      ),
+                    ),
+                  ],
+                ),
+
+                /// Student Name, Department, Section & Semester
+                const CSectionDivider(dividerText: 'Student Information'),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Name',
+                        prefixIcon: Iconsax.user_edit,
+                        controller: form.studentNameController,
+                        maxLength: 50,
+                      ),
+                    ),
+                    const SizedBox(width: CSizes.spaceBtwInputFields),
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Student-ID',
+                        prefixIcon: Iconsax.personalcard,
+                        controller: form.studentIdController,
+                        maxLength: 30,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: CSizes.spaceBtwInputFields),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Section',
+                        prefixIcon: Iconsax.layer,
+                        controller: form.studentSectionController,
+                        maxLength: 20,
+                      ),
+                    ),
+                    const SizedBox(width: CSizes.spaceBtwInputFields),
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Department',
+                        prefixIcon: Iconsax.pen_tool,
+                        controller: form.studentDeptController,
+                        maxLength: 50,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: CSizes.spaceBtwInputFields),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Semester',
+                        prefixIcon: Iconsax.keyboard,
+                        controller: form.studentSemesterController,
+                        maxLength: 20,
+                      ),
+                    ),
+                    const SizedBox(width: CSizes.spaceBtwInputFields),
+                    Expanded(
+                      child: CTextFormField(
+                        label: 'Date',
+                        prefixIcon: Iconsax.calendar_search,
+                        onTap: () => date.datePicker(context),
+                        controller: date.submissionDateController,
+                        readOnly: true,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: CSizes.spaceBtwSections),
+
+                /// Generate Pdf Button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => const PDFViewScreen());
+                      localStorage.setStudentInfo();
+                      log(form.studentUniversityIdController.text);
+                    },
+                    child: const Text('Generate PDF'),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
