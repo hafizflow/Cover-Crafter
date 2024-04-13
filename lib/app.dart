@@ -5,6 +5,8 @@ import 'package:cover_page/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'features/personalization/controllers/services/app_theme.dart';
+
 class CoverPageApp extends StatelessWidget {
   const CoverPageApp({super.key});
 
@@ -15,7 +17,7 @@ class CoverPageApp extends StatelessWidget {
       initialBinding: ControllerBinder(),
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: AppTheme().getThemeMode(),
       home: const InfoFillUpScreen(),
     );
   }

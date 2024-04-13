@@ -37,6 +37,8 @@ class UniversityDropDown extends StatelessWidget {
           },
         ).toList(),
         onChanged: (id) {
+          // formController.studentUniversityIdController.text = id.toString();
+
           formController.universityLogoController.text =
               university.getUniversityLogo(
             id.toString(),

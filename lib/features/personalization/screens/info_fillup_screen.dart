@@ -15,6 +15,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../common/widgets/info_fillup/text_form_field.dart';
 import '../controllers/form/field_controller.dart';
 import '../controllers/form/form_controller.dart';
+import '../controllers/services/student_local_storage.dart';
 
 class InfoFillUpScreen extends StatefulWidget {
   const InfoFillUpScreen({super.key});
@@ -26,10 +27,12 @@ class InfoFillUpScreen extends StatefulWidget {
 class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
   final date = DateController.instance;
   final form = FormController.instance;
+  final localStorage = StudentLocalStorage();
 
   @override
   void initState() {
     super.initState();
+    localStorage.getStudentInfo();
   }
 
   @override
@@ -211,6 +214,7 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     Get.to(() => const PDFViewScreen());
+                    localStorage.setStudentInfo();
                   },
                   child: const Text('Generate PDF'),
                 ),

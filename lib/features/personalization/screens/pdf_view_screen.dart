@@ -55,7 +55,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
       ),
       body: GetBuilder<PdfThemeController>(builder: (theme) {
         return PdfPreview(
-          pdfFileName: 'pdfName',
+          pdfFileName: 'CoverPage:${form.courseNameController.text}',
           maxPageWidth: double.infinity,
           build: theme.updateViewPage(),
           canDebug: false,

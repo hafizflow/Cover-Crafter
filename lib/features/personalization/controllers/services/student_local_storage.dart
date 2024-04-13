@@ -1,30 +1,28 @@
-import '../../../../utils/local_storage/local_storage.dart';
+import 'package:get_storage/get_storage.dart';
 import '../form/form_controller.dart';
 
 class StudentLocalStorage {
-  final _storage = CLocalStorage();
+  final _storage = GetStorage();
   final form = FormController.instance;
 
-  // Method to save student information
   void setStudentInfo() {
-    _storage.saveData('studentName', form.studentNameController.text);
-    _storage.saveData('studentId', form.studentIdController.text);
-    _storage.saveData('studentSection', form.studentSectionController.text);
-    _storage.saveData('studentDepartment', form.studentDeptController.text);
-    _storage.saveData('studentSemester', form.studentSemesterController.text);
+    _storage.write('studentName', form.studentNameController.text.trim());
+    _storage.write('studentId', form.studentIdController.text.trim());
+    _storage.write('studentSection', form.studentSectionController.text.trim());
+    _storage.write('studentDepartment', form.studentDeptController.text.trim());
+    _storage.write(
+        'studentSemester', form.studentSemesterController.text.trim());
+    // _storage.write(
+    //     'studentUniversityId', form.studentUniversityIdController.text);
   }
 
-  // Retrieving data
   void getStudentInfo() {
-    form.studentNameController.text =
-        _storage.readData<String>('studentName') ?? "";
-    form.studentIdController.text =
-        _storage.readData<String>('studentId') ?? "";
-    form.studentSectionController.text =
-        _storage.readData<String>('studentSection') ?? "";
-    form.studentDeptController.text =
-        _storage.readData<String>('studentDepartment') ?? "";
-    form.studentSemesterController.text =
-        _storage.readData<String>('studentSemester') ?? "";
+    form.studentNameController.text = _storage.read('studentName');
+    form.studentIdController.text = _storage.read('studentId');
+    form.studentSectionController.text = _storage.read('studentSection');
+    form.studentDeptController.text = _storage.read('studentDepartment');
+    form.studentSemesterController.text = _storage.read('studentSemester');
+    // form.studentUniversityIdController.text =
+    //     _storage.read('studentUniversityId');
   }
 }

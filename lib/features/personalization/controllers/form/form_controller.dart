@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class FormController extends GetxController {
@@ -9,6 +10,8 @@ class FormController extends GetxController {
   TextEditingController universityLogoController = TextEditingController();
   TextEditingController universityShortNameController = TextEditingController();
   TextEditingController universityFullNameController = TextEditingController();
+  TextEditingController studentUniversityIdController = TextEditingController();
+
   TextEditingController courseCodeController = TextEditingController();
   TextEditingController courseNameController = TextEditingController();
   TextEditingController titleController = TextEditingController();
@@ -33,6 +36,7 @@ class FormController extends GetxController {
     universityLogoController.dispose();
     universityShortNameController.dispose();
     universityFullNameController.dispose();
+    studentUniversityIdController.dispose();
     courseCodeController.dispose();
     courseNameController.dispose();
     titleController.dispose();
