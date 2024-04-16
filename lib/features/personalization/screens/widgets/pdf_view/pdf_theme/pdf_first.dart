@@ -12,6 +12,24 @@ class PdfFirst {
   final formController = FormController.instance;
   final dateController = DateController.instance;
 
+  bool getHeight() {
+    if (formController.universityLogoController.text == "" ||
+        formController.studentUniversityIdController.text == "1") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool getTitleOrExperimentName() {
+    if (formController.coverPageController.text == "" ||
+        formController.coverPageController.text == "Assignment") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   Future<Uint8List> generatePdf(final PdfPageFormat pageFormat) async {
     final pdf = pw.Document();
 
@@ -35,10 +53,12 @@ class PdfFirst {
             children: [
               pw.Column(
                 children: [
-                  pw.SizedBox(height: 35),
+                  pw.SizedBox(height: getHeight() ? 35 : 20),
                   pw.Container(
-                      height: 85, child: image, alignment: pw.Alignment.center),
-                  pw.SizedBox(height: PDFSpacing.spaceBtwSection),
+                      height: getHeight() ? 85 : 120,
+                      child: image,
+                      alignment: pw.Alignment.center),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwSection - 4),
                   pw.Text(
                     formController.coverPageController.text.trim(),
                     style: PDFTextStyle.headingTextStyle,
@@ -83,7 +103,7 @@ class PdfFirst {
 
                     pw.SizedBox(height: PDFSpacing.spaceBtwSection),
 
-                    formController.experimentNameController.text.isEmpty
+                    getTitleOrExperimentName()
                         ?
 
                         /// Title

@@ -5,20 +5,36 @@ import 'package:pdf/widgets.dart' as pw;
 import '../../../../../../common/styles/pdf_view/pdf_spacing.dart';
 import '../../../../../../common/styles/pdf_view/pdf_text_style.dart';
 import '../../../../../../utils/constants/image_strings.dart';
+import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../controllers/form/date_controller.dart';
 import '../../../../controllers/form/form_controller.dart';
 
 class PdfSecond {
-  final formController = FormController.instance;
+  final form = FormController.instance;
   final dateController = DateController.instance;
+
+  String getImage() {
+    if (form.universityLogoController.text == CImages.myUniversity) {
+      return CImages.diuLogo;
+    } else {
+      return form.universityLogoController.text;
+    }
+  }
+
+  bool getTitleOrExperimentName() {
+    if (form.coverPageController.text == "" ||
+        form.coverPageController.text == "Assignment") {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   Future<Uint8List> generatePdf(final PdfPageFormat pageFormat) async {
     final pdf = pw.Document();
 
     final img = await rootBundle.load(
-      formController.universityLogoController.text == ""
-          ? CImages.myUniversity
-          : formController.universityLogoController.text,
+      form.universityLogoController.text == "" ? CImages.diuLogo : getImage(),
     );
 
     final imageBytes = img.buffer.asUint8List();
@@ -31,228 +47,238 @@ class PdfSecond {
           return pw.Stack(
             children: [
               pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.center,
                 children: [
-                  pw.SizedBox(height: 35),
                   pw.Container(
-                      height: 85, child: image, alignment: pw.Alignment.center),
+                    height: 140,
+                    child: image,
+                    alignment: pw.Alignment.center,
+                  ),
                   pw.SizedBox(height: PDFSpacing.spaceBtwSection),
                   pw.Text(
-                    "Hafiz Hello",
-                    style: PDFTextStyle.headingTextStyle,
+                    form.universityFullNameController.text,
+                    style: pw.TextStyle(
+                      fontSize: form.universityFullNameController.text ==
+                              CTexts.aiubFullName
+                          ? 21
+                          : 25,
+                      fontWeight: pw.FontWeight.bold,
+                    ),
                   ),
-                ],
-              ),
-              pw.Padding(
-                padding: const pw.EdgeInsets.symmetric(horizontal: 24),
-                child: pw.Column(
-                  crossAxisAlignment: pw.CrossAxisAlignment.start,
-                  children: [
-                    pw.SizedBox(height: 200),
-
-                    /// Course Code and title
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Course Code : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.courseCodeController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
+                  pw.SizedBox(height: 8),
+                  pw.Text(
+                    form.coverPageController.text,
+                    style: pw.TextStyle(
+                      fontSize: 28,
+                      fontWeight: pw.FontWeight.bold,
+                      color: PdfColors.deepPurple,
                     ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Course Title : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.courseNameController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
+                  ),
+                  pw.Divider(
+                    height: 12,
+                    indent: 100,
+                    endIndent: 100,
+                    thickness: 2,
+                  ),
+                  pw.SizedBox(height: 8),
+
+                  /// Course Code and title
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: 'Course Code : ',
+                      style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: form.courseCodeController.text,
+                          style: PDFTextStyle.normalTextStyle,
+                        ),
+                      ],
                     ),
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: 'Course Title : ',
+                      style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: form.courseNameController.text,
+                          style: PDFTextStyle.normalTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
 
-                    pw.SizedBox(height: PDFSpacing.spaceBtwSection),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwSection),
 
-                    formController.experimentNameController.text.isEmpty
-                        ?
+                  getTitleOrExperimentName()
+                      ?
 
-                        /// Title
-                        pw.RichText(
+                      /// Title
+                      pw.RichText(
+                          text: pw.TextSpan(
+                            text: 'Title : ',
+                            style: PDFTextStyle.boldTextStyle,
+                            children: [
+                              pw.TextSpan(
+                                text: form.titleController.text,
+                                style: PDFTextStyle.normalTextStyle,
+                              ),
+                            ],
+                          ),
+                        )
+                      :
+
+                      /// Experiment No and Name
+                      pw.Column(children: [
+                          pw.RichText(
                             text: pw.TextSpan(
-                              text: 'Title : ',
+                              text: 'Experiment No : ',
                               style: PDFTextStyle.boldTextStyle,
                               children: [
                                 pw.TextSpan(
-                                  text: formController.titleController.text,
+                                  text: form.experimentNoController.text,
                                   style: PDFTextStyle.normalTextStyle,
                                 ),
                               ],
                             ),
-                          )
-                        :
-
-                        /// Experiment No and Name
-                        pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: [
-                              pw.RichText(
-                                text: pw.TextSpan(
-                                  text: 'Experiment No : ',
-                                  style: PDFTextStyle.boldTextStyle,
-                                  children: [
-                                    pw.TextSpan(
-                                      text: formController
-                                          .experimentNoController.text,
-                                      style: PDFTextStyle.normalTextStyle,
-                                    ),
-                                  ],
+                          ),
+                          pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                          pw.RichText(
+                            text: pw.TextSpan(
+                              text: 'Experiment Name : ',
+                              style: PDFTextStyle.boldTextStyle,
+                              children: [
+                                pw.TextSpan(
+                                  text: form.experimentNameController.text,
+                                  style: PDFTextStyle.normalTextStyle,
                                 ),
-                              ),
-                              pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                              pw.RichText(
-                                text: pw.TextSpan(
-                                  text: 'Experiment Name : ',
-                                  style: PDFTextStyle.boldTextStyle,
-                                  children: [
-                                    pw.TextSpan(
-                                      text: formController
-                                          .experimentNameController.text,
-                                      style: PDFTextStyle.normalTextStyle,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                        ]),
 
-                    /// Teacher information
-                    pw.SizedBox(height: 30),
-                    pw.Text(
-                      'Submitted To',
-                      style: pw.TextStyle(
-                        fontSize: 20,
-                        fontWeight: pw.FontWeight.bold,
-                        color: PdfColors.blue,
-                      ),
+                  /// Teacher information
+                  pw.SizedBox(height: 16),
+                  pw.Text(
+                    'Submitted To',
+                    style: pw.TextStyle(
+                      fontSize: 22,
+                      fontWeight: pw.FontWeight.bold,
+                      color: PdfColors.deepPurple,
                     ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwSection - 4),
-                    pw.Text(
-                      formController.teacherNameController.text,
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwSection - 8),
+                  pw.Text(
+                    form.teacherNameController.text,
+                    style: PDFTextStyle.boldTextStyle,
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                  pw.Text(
+                    form.teacherDepartmentController.text,
+                    style: PDFTextStyle.boldTextStyle,
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: form.teacherAcademicRankController.text,
                       style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: ', ${form.universityShortNameController.text}',
+                          style: PDFTextStyle.boldTextStyle,
+                        ),
+                      ],
                     ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.Text(
-                      formController.teacherDepartmentController.text,
-                      style: PDFTextStyle.boldTextStyle,
-                    ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: formController.teacherAcademicRankController.text,
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text:
-                                ', ${formController.universityShortNameController.text}',
-                            style: PDFTextStyle.boldTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
+                  ),
 
-                    /// Student Information
-                    pw.SizedBox(height: 30),
-                    pw.Text(
-                      'Submitted By',
-                      style: pw.TextStyle(
-                        fontSize: 20,
-                        fontWeight: pw.FontWeight.bold,
-                        color: PdfColors.blue,
-                      ),
+                  /// Student Information
+                  pw.SizedBox(height: 24),
+                  pw.Text(
+                    'Submitted By',
+                    style: pw.TextStyle(
+                      fontSize: 22,
+                      fontWeight: pw.FontWeight.bold,
+                      color: PdfColors.deepPurple,
                     ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwSection - 4),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Name : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.studentNameController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'ID : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.studentIdController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Section : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.studentSectionController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Semester : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.studentSemesterController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.RichText(
-                      text: pw.TextSpan(
-                        text: 'Department : ',
-                        style: PDFTextStyle.boldTextStyle,
-                        children: [
-                          pw.TextSpan(
-                            text: formController.studentDeptController.text,
-                            style: PDFTextStyle.normalTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                    pw.SizedBox(height: PDFSpacing.spaceBtwItem),
-                    pw.Text(
-                      formController.universityFullNameController.text,
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwSection - 8),
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: 'Name : ',
                       style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: form.studentNameController.text,
+                          style: PDFTextStyle.normalTextStyle,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-              pw.Center(
-                child: pw.Column(
-                  children: [
-                    pw.SizedBox(height: 675),
-                    pw.RichText(
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: 'ID : ',
+                      style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: form.studentIdController.text,
+                          style: PDFTextStyle.normalTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: 'Section : ',
+                      style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: form.studentSectionController.text,
+                          style: PDFTextStyle.normalTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: 'Semester : ',
+                      style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: form.studentSemesterController.text,
+                          style: PDFTextStyle.normalTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwItem),
+                  pw.RichText(
+                    text: pw.TextSpan(
+                      text: 'Department : ',
+                      style: PDFTextStyle.boldTextStyle,
+                      children: [
+                        pw.TextSpan(
+                          text: form.studentDeptController.text,
+                          style: PDFTextStyle.normalTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.SizedBox(height: PDFSpacing.spaceBtwSection + 16),
+
+                  pw.Container(
+                    decoration: pw.BoxDecoration(
+                      border: pw.Border.all(
+                        color: PdfColors.black,
+                        width: 1.5,
+                      ),
+                      borderRadius: pw.BorderRadius.circular(5.0),
+                    ),
+                    padding: const pw.EdgeInsets.all(8.0),
+                    child: pw.RichText(
                       text: pw.TextSpan(
                         text: 'Submission Date : ',
                         style: PDFTextStyle.boldTextStyle,
@@ -264,15 +290,8 @@ class PdfSecond {
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-              pw.Container(
-                width: pageFormat.width,
-                height: pageFormat.height,
-                decoration: pw.BoxDecoration(
-                  border: pw.Border.all(color: PdfColors.blue, width: 5),
-                ),
+                  ),
+                ],
               ),
             ],
           );

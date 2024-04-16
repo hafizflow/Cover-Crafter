@@ -29,6 +29,8 @@ class PdfThemeController extends GetxController {
         return first.generatePdf(PdfPageFormat.a4);
       case 2:
         return second.generatePdf(PdfPageFormat.a4);
+      case 3:
+        return third.generatePdf(PdfPageFormat.a4);
       default:
         return first.generatePdf(PdfPageFormat.a4);
     }
@@ -41,6 +43,8 @@ class PdfThemeController extends GetxController {
         return first.generatePdf;
       case 2:
         return second.generatePdf;
+      case 3:
+        return third.generatePdf;
       default:
         return first.generatePdf;
     }

@@ -83,7 +83,7 @@ class University {
       case "10":
         return CTexts.ewuFullName;
       default:
-        return "";
+        return CTexts.diuFullName;
     }
   }
 
@@ -111,7 +111,7 @@ class University {
       case "10":
         return 9;
       default:
-        return -1;
+        return 0;
     }
   }
 
@@ -122,7 +122,7 @@ class University {
       case "Lab Report":
         return 1;
       default:
-        return -1;
+        return 0;
     }
   }
 }

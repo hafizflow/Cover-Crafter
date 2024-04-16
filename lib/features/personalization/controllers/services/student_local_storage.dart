@@ -39,4 +39,17 @@ class StudentLocalStorage {
     form.universityFullNameController.text =
         _storage.read('universityFullName') ?? "";
   }
+
+  void eraseAllData() {
+    _storage.erase();
+    form.studentNameController.clear();
+    form.studentIdController.clear();
+    form.studentSectionController.clear();
+    form.studentDeptController.clear();
+    form.studentSemesterController.clear();
+    form.studentUniversityIdController.clear();
+    form.universityLogoController.clear();
+    form.universityShortNameController.clear();
+    form.universityFullNameController.clear();
+  }
 }

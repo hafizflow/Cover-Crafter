@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -12,12 +10,10 @@ class AppTheme {
   }
 
   ThemeMode getThemeMode() {
-    log('IsDark: ${isSavedDarkMode().toString()}');
     return isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light;
   }
 
   void saveThemeMode(bool isDarkMode) {
     _storage.write(_key, !isDarkMode);
-    log('IsDark: ${isSavedDarkMode().toString()}');
   }
 }

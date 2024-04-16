@@ -1,13 +1,13 @@
-import 'dart:developer';
-
 import 'package:cover_page/common/widgets/info_fillup/section_divider.dart';
 import 'package:cover_page/features/personalization/controllers/form/date_controller.dart';
+import 'package:cover_page/features/personalization/controllers/services/show_Snackbar.dart';
 import 'package:cover_page/features/personalization/screens/pdf_view_screen.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/app_drawer.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/cover_page_dropdown.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/toggle_theme_button.dart';
 import 'package:cover_page/features/personalization/screens/widgets/info_fillup/university_dropdown.dart';
 import 'package:cover_page/utils/constants/sizes.dart';
+import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -80,7 +80,7 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                         label: 'Course Name',
                         prefixIcon: Iconsax.code,
                         controller: form.courseNameController,
-                        maxLength: 40,
+                        maxLength: 50,
                       ),
                     ),
                   ],
@@ -232,7 +232,15 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                     onPressed: () {
                       Get.to(() => const PDFViewScreen());
                       localStorage.setStudentInfo();
-                      log(form.studentUniversityIdController.text);
+                      ShowShowSnackBar().getSnackBar()
+                          ? CHelperFunctions.showToastMessage(
+                              "Successfully PDF crated",
+                              Colors.green,
+                            )
+                          : CHelperFunctions.showToastMessage(
+                              "Please enter all the information",
+                              Colors.red,
+                            );
                     },
                     child: const Text('Generate PDF'),
                   ),

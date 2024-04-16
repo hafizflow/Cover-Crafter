@@ -31,7 +31,7 @@ class MyCard extends StatelessWidget {
                         radius: 20,
                         child: CircleAvatar(
                           backgroundImage:
-                              AssetImage(CImages.buetLogo), //NetworkImage
+                              AssetImage(CImages.me), //NetworkImage
                           radius: 20,
                         ),
                       ),
@@ -53,7 +53,7 @@ class MyCard extends StatelessWidget {
                   ),
                   const SizedBox(height: CSizes.spaceBtwInputFields - 4),
                   Text(
-                    "Hello My Name is Hafizur Rahman. Now i am writting ML and AI",
+                    "Assalamu Alaikum. If you face any bug or error kindly inform me.",
                     style: Theme.of(context).textTheme.labelLarge,
                   ),
                   const SizedBox(height: CSizes.spaceBtwInputFields - 4),

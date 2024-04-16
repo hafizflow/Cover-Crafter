@@ -1,5 +1,8 @@
+import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import 'my_card.dart';
@@ -22,11 +25,24 @@ class AppDrawer extends StatelessWidget {
                   const ExpansionTile(
                     leading: Icon(Icons.add_box_outlined),
                     title: Text('About'),
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                        child: Text(
+                          "This app simplified the process of making cover page for Assignment & Lab Report.",
+                        ),
+                      )
+                    ],
                   ),
                   ListTile(
                     leading: const Icon(Icons.refresh),
                     title: const Text('Refresh'),
-                    onTap: () {},
+                    onTap: () => CHelperFunctions.showAlert(
+                      "Warning",
+                      "Are you sure to erase all the information ?",
+                      context,
+                    ),
                   ),
                   ListTile(
                     leading: const Icon(Icons.share_rounded),
@@ -36,12 +52,20 @@ class AppDrawer extends StatelessWidget {
                   ListTile(
                     leading: const Icon(Iconsax.message_question),
                     title: const Text('Help & FeedBack'),
-                    onTap: () {},
+                    onTap: () {
+                      launchUrl(
+                        Uri.parse("mailto:hafizur.rahman.cs@gmail.com"),
+                      );
+                    },
                   ),
                   ListTile(
-                    leading: const Icon(Iconsax.link),
-                    title: const Text('Connect'),
-                    onTap: () {},
+                    leading: const Icon(FontAwesomeIcons.github),
+                    title: const Text('GitHub Repository'),
+                    onTap: () {
+                      launchUrl(
+                        Uri.parse("https://github.com/hafizflow/cover_page"),
+                      );
+                    },
                   ),
                 ],
               ),

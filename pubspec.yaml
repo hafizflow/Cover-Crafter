@@ -20,6 +20,7 @@ dependencies:
   another_flushbar: ^1.12.30
   dropdown_button2: ^2.3.9
   circular_menu: ^3.0.0
+  flutter_native_splash: ^2.4.0
 
   # Pdf Packages
   pdf: ^3.10.8
@@ -45,6 +46,22 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^3.0.2
 
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#272727"
+  image: assets/logos/app.png
+  image_dark: assets/logos/app.png
+
+  android_12:
+    color: "#FFFFFF"
+    color_dark: "#272727"
+    image: assets/logos/app.png
+    image_dark: assets/logos/app.png
+
+  web: false
+
+
+
 flutter:
   uses-material-design: true
 
@@ -52,6 +69,7 @@ flutter:
   assets:
     - assets/images/university_logo/
     - assets/logos/
+    - assets/fonts/
 
 
     # - - - - - - - - LOCAL FONTS - - - - - - - - #
