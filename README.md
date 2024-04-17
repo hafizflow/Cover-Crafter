@@ -1,16 +1,22 @@
-# cover_page
+# Cover Page
 
-A new Flutter project.
+This app simplifies the process of making a cover page for university students.
 
-## Getting Started
+### Feature
 
-This project is a starting point for a Flutter application.
+- User-friendly design
+- One-time information entry ( Student Information )
+- Work for different university
+- Download and Multi-Theme options for the cover page
 
-A few resources to get you started if this is your first Flutter project:
+### App Preview
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<img width="715" alt="Screenshot 2024-04-18 at 1 51 09 AM" src="https://github.com/hafizflow/cover_page/assets/143031834/84cf7bf5-0768-4788-9952-cb6c0bc9d0d2">
+<img width="715" alt="Screenshot 2024-04-18 at 2 11 03 AM" src="https://github.com/hafizflow/cover_page/assets/143031834/378c6754-edd1-4506-94ba-b0caa6b2fd83">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### Code
+
+- GetX Stage Management
+- Moderately clean code base
+- MVC architecture
