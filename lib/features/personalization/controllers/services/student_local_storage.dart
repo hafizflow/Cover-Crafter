@@ -51,5 +51,13 @@ class StudentLocalStorage {
     form.universityLogoController.clear();
     form.universityShortNameController.clear();
     form.universityFullNameController.clear();
+    form.coverPageController.clear();
+    form.courseCodeController.clear();
+    form.courseNameController.clear();
+    form.experimentNoController.clear();
+    form.experimentNameController.clear();
+    form.teacherNameController.clear();
+    form.teacherDepartmentController.clear();
+    form.teacherDesignationController.clear();
   }
 }

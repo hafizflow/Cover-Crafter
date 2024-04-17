@@ -183,7 +183,7 @@ class PdfThird {
                   pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                   pw.RichText(
                     text: pw.TextSpan(
-                      text: form.teacherAcademicRankController.text.trim(),
+                      text: form.teacherDesignationController.text.trim(),
                       style: PDFTextStyle.boldTextStyle,
                       children: [
                         pw.TextSpan(

@@ -181,7 +181,7 @@ class PdfFirst {
                     pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                     pw.RichText(
                       text: pw.TextSpan(
-                        text: formController.teacherAcademicRankController.text
+                        text: formController.teacherDesignationController.text
                             .trim(),
                         style: PDFTextStyle.boldTextStyle,
                         children: [

@@ -21,7 +21,7 @@ class FormController extends GetxController {
   // Teacher
   TextEditingController teacherNameController = TextEditingController();
   TextEditingController teacherDepartmentController = TextEditingController();
-  TextEditingController teacherAcademicRankController = TextEditingController();
+  TextEditingController teacherDesignationController = TextEditingController();
   // Student
   TextEditingController studentNameController = TextEditingController();
   TextEditingController studentIdController = TextEditingController();
@@ -44,7 +44,7 @@ class FormController extends GetxController {
     experimentNameController.dispose();
     teacherNameController.dispose();
     teacherDepartmentController.dispose();
-    teacherAcademicRankController.dispose();
+    teacherDesignationController.dispose();
     studentNameController.dispose();
     studentIdController.dispose();
     studentSectionController.dispose();

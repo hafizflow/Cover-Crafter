@@ -12,7 +12,7 @@ class ShowShowSnackBar {
         form.courseNameController.text.isEmpty ||
         form.teacherNameController.text.isEmpty ||
         form.teacherDepartmentController.text.isEmpty ||
-        form.teacherAcademicRankController.text.isEmpty ||
+        form.teacherDesignationController.text.isEmpty ||
         form.studentNameController.text.isEmpty ||
         form.studentIdController.text.isEmpty ||
         form.studentSectionController.text.isEmpty ||

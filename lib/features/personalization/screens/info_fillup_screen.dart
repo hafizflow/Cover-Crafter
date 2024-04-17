@@ -151,7 +151,7 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                       child: CTextFormField(
                         label: 'Designation',
                         prefixIcon: Iconsax.activity,
-                        controller: form.teacherAcademicRankController,
+                        controller: form.teacherDesignationController,
                         maxLength: 40,
                       ),
                     ),
