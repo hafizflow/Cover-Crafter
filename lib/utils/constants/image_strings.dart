@@ -17,7 +17,9 @@ class CImages {
   static const String githubLogo = "assets/logos/github.png";
   static const String telegramLogo = "assets/logos/telegram.png";
   static const String emailLogo = "assets/logos/email.png";
+  static const String webLogo = "assets/logos/web.png";
 
   /// Me
   static const String me = "assets/logos/me.png";
+  static const String rafi = "assets/logos/rafi.png";
 }

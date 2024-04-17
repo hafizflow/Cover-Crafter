@@ -8,6 +8,7 @@ import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:printing/printing.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -59,6 +60,12 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
           maxPageWidth: double.infinity,
           build: theme.updateViewPage(),
           canDebug: false,
+          loadingWidget: LoadingAnimationWidget.staggeredDotsWave(
+            color: CHelperFunctions.isDarkMode(context)
+                ? Colors.teal
+                : CColors.buttonSecondary,
+            size: 50,
+          ),
           canChangePageFormat: false,
           canChangeOrientation: false,
           previewPageMargin: const EdgeInsets.symmetric(

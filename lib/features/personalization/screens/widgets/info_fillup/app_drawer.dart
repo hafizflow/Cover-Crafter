@@ -1,3 +1,4 @@
+import 'package:cover_page/features/personalization/screens/widgets/info_fillup/rafi_card.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -72,7 +73,11 @@ class AppDrawer extends StatelessWidget {
             ),
             const Align(
               alignment: FractionalOffset.bottomCenter,
-              child: Column(children: [MyCard()]),
+              child: Column(children: [
+                MyCard(),
+                SizedBox(height: 12),
+                RafiCard(),
+              ]),
             )
           ],
         ),

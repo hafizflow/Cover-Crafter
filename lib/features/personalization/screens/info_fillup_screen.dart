@@ -46,10 +46,13 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
         ),
         drawer: const AppDrawer(),
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: CSizes.defaultSpace,
-              vertical: CSizes.verticalSpace,
+            padding: const EdgeInsets.only(
+              left: CSizes.defaultSpace,
+              right: CSizes.defaultSpace,
+              top: CSizes.verticalSpace,
+              bottom: 32,
             ),
             child: Column(
               children: [
@@ -146,7 +149,7 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                     const SizedBox(width: CSizes.spaceBtwInputFields),
                     Expanded(
                       child: CTextFormField(
-                        label: 'Academic Rank',
+                        label: 'Designation',
                         prefixIcon: Iconsax.activity,
                         controller: form.teacherAcademicRankController,
                         maxLength: 40,

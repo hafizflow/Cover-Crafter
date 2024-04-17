@@ -1,5 +1,3 @@
-import 'package:another_flushbar/flushbar.dart';
-import 'package:another_flushbar/flushbar_route.dart';
 import 'package:cover_page/features/personalization/controllers/services/student_local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -27,19 +25,19 @@ class CHelperFunctions {
   }
 
   // flushBar
-  static showFlushBar(
-      String message, BuildContext context, MaterialColor color) {
-    showFlushbar(
-      context: context,
-      flushbar: Flushbar(
-        message: message,
-        duration: const Duration(seconds: 2),
-        margin: const EdgeInsets.symmetric(horizontal: 24),
-        borderRadius: BorderRadius.circular(12),
-        backgroundColor: color,
-      )..show(context),
-    );
-  }
+  // static showFlushBar(
+  //     String message, BuildContext context, MaterialColor color) {
+  //   showFlushbar(
+  //     context: context,
+  //     flushbar: Flushbar(
+  //       message: message,
+  //       duration: const Duration(seconds: 2),
+  //       margin: const EdgeInsets.symmetric(horizontal: 24),
+  //       borderRadius: BorderRadius.circular(12),
+  //       backgroundColor: color,
+  //     )..show(context),
+  //   );
+  // }
 
   // show alert
   static void showAlert(String title, String message, BuildContext context) {

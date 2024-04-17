@@ -1,5 +1,5 @@
 import 'package:cover_page/controller_binder.dart';
-import 'package:cover_page/features/personalization/screens/info_fillup_screen.dart';
+import 'package:cover_page/features/personalization/screens/splash_screen.dart';
 
 import 'package:cover_page/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class CoverPageApp extends StatelessWidget {
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
       themeMode: AppTheme().getThemeMode(),
-      home: const InfoFillUpScreen(),
+      home: const SplashScreen(),
     );
   }
 }
