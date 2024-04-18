@@ -2,8 +2,7 @@ import 'package:circular_menu/circular_menu.dart';
 import 'package:cover_page/features/personalization/controllers/form/form_controller.dart';
 import 'package:cover_page/features/personalization/controllers/pdf/pdf_controller.dart';
 import 'package:cover_page/features/personalization/controllers/pdf/pdf_theme_controller.dart';
-import 'package:cover_page/features/personalization/screens/widgets/pdf_view/open_pdf.dart';
-import 'package:cover_page/features/personalization/screens/widgets/pdf_view/pdf_theme/pdf_first.dart';
+import 'package:cover_page/features/personalization/controllers/services/open_pdf.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,9 +24,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
   final pdfInit = Get.find<PDFController>();
   final pdfThemeController = PdfThemeController.instance;
   final form = FormController.instance;
-  final showPdf = OpenPdf();
 
-  final first = PdfFirst();
   late String? pdfName = form.courseNameController.text.trim();
 
   @override
@@ -75,8 +72,11 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
           actions: [
             IconButton(
               padding: EdgeInsets.zero,
-              onPressed: () => showPdf.openPdf(),
-              icon: const Icon(Icons.file_download_outlined),
+              onPressed: () => OpenPdf().openPdf(),
+              icon: const Icon(
+                Icons.file_download_outlined,
+                size: 30,
+              ),
             ),
           ],
         );
