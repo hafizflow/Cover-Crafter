@@ -1,9 +1,11 @@
+import 'package:cover_page/features/personalization/controllers/form/date_controller.dart';
 import 'package:get_storage/get_storage.dart';
 import '../form/form_controller.dart';
 
 class StudentLocalStorage {
   final _storage = GetStorage();
   final form = FormController.instance;
+  final date = DateController.instance;
 
   void setStudentInfo() {
     _storage.write('studentName', form.studentNameController.text.trim());
@@ -59,5 +61,7 @@ class StudentLocalStorage {
     form.teacherNameController.clear();
     form.teacherDepartmentController.clear();
     form.teacherDesignationController.clear();
+    date.submissionDateController.clear();
+    form.titleController.clear();
   }
 }

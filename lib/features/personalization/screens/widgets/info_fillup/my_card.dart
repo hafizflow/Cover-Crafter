@@ -64,7 +64,7 @@ class MyCard extends StatelessWidget {
                         builder: (context, followLink) => InkWell(
                           onTap: followLink,
                           child: SizedBox(
-                            height: CSizes.iconMd - 4,
+                            height: CSizes.iconMd - 2,
                             child: Image.asset(
                               CImages.emailLogo,
                               color: isDark ? Colors.white : null,
