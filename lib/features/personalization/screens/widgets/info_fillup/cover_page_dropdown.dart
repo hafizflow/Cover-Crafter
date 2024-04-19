@@ -23,8 +23,6 @@ class CoverPageDropDown extends StatelessWidget {
     // final university = University();
     bool isDark = CHelperFunctions.isDarkMode(context);
 
-    log(form.coverPageController.text);
-
     return Expanded(
       child: DropdownButtonFormField2<String>(
         // value: form.coverPageController.text == ""
@@ -44,7 +42,6 @@ class CoverPageDropDown extends StatelessWidget {
           form.coverPageController.text = coverPageType!;
           fieldController.fieldShow();
         },
-        // log(val.toString());
         style: Theme.of(context).textTheme.bodyLarge,
         decoration: const InputDecoration(
           label: Text('  CoverPage'),

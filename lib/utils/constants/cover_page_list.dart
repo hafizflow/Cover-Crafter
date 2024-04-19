@@ -64,6 +64,6 @@ class CoverPageList {
       'image': CImages.ewuLogo,
       'shortName': CTexts.ewuShortName,
       'fullName': CTexts.ewuFullName,
-    }
+    },
   ];
 }
