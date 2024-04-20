@@ -12,6 +12,13 @@ class CTexts {
   static const String bracFullName = 'BRAC University';
   static const String iubFullName = 'Independent University, Bangladesh';
   static const String ewuFullName = 'East West University';
+  static const String cityFullName = 'City University';
+  static const String gubFullName = 'Green University Bangladesh';
+  static const String iutFullName = 'Islamic University of Technology';
+  static const String ruetFullName =
+      'Rajshahi University of Engineering & Technology';
+  static const String jnuFullName = 'Jagannath University';
+  static const String ruFullName = 'Rajshahi University';
 
   /// University Short Name
   static const String diuShortName = 'DIU';
@@ -24,4 +31,10 @@ class CTexts {
   static const String bracShortName = 'BRAC';
   static const String iubShortName = 'IUB';
   static const String ewuShortName = 'EWU';
+  static const String cityShortName = 'CU';
+  static const String gubShortName = 'GUB';
+  static const String iutShortName = 'IUT';
+  static const String ruetShortName = 'RUET';
+  static const String jnuShortName = 'JnU';
+  static const String ruShortName = 'RU';
 }

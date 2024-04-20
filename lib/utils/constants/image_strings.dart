@@ -11,6 +11,12 @@ class CImages {
   static const String bracLogo = "assets/images/university_logo/BRAC.png";
   static const String iubLogo = "assets/images/university_logo/IUB.png";
   static const String ewuLogo = "assets/images/university_logo/EWU.png";
+  static const String scuLogo = "assets/images/university_logo/CITY.png";
+  static const String gubLogo = "assets/images/university_logo/GUB.png";
+  static const String iutLogo = "assets/images/university_logo/IUT.png";
+  static const String ruetLogo = "assets/images/university_logo/RUET.png";
+  static const String jnuLogo = "assets/images/university_logo/JnU.png";
+  static const String ruLogo = "assets/images/university_logo/RU.png";
 
   /// Social Media
   static const String linkedinLogo = "assets/logos/linkedin.png";

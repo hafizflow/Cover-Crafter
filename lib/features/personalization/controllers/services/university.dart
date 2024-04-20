@@ -26,6 +26,18 @@ class University {
         return CImages.iubLogo;
       case '10':
         return CImages.ewuLogo;
+      case '11':
+        return CImages.scuLogo;
+      case '12':
+        return CImages.gubLogo;
+      case '13':
+        return CImages.ruetLogo;
+      case '14':
+        return CImages.ruLogo;
+      case '15':
+        return CImages.jnuLogo;
+      case '16':
+        return CImages.iutLogo;
       default:
         return CImages.diuLogo;
     }
@@ -54,6 +66,18 @@ class University {
         return CTexts.iubShortName;
       case '10':
         return CTexts.ewuShortName;
+      case '11':
+        return CTexts.ewuShortName;
+      case '12':
+        return CTexts.gubShortName;
+      case '13':
+        return CTexts.ruetShortName;
+      case '14':
+        return CTexts.ruShortName;
+      case '15':
+        return CTexts.jnuShortName;
+      case '16':
+        return CTexts.iutShortName;
       default:
         return '';
     }
@@ -82,6 +106,18 @@ class University {
         return CTexts.iubFullName;
       case "10":
         return CTexts.ewuFullName;
+      case "11":
+        return CTexts.cityFullName;
+      case "12":
+        return CTexts.gubFullName;
+      case "13":
+        return CTexts.ruetFullName;
+      case "14":
+        return CTexts.ruFullName;
+      case "15":
+        return CTexts.jnuFullName;
+      case "16":
+        return CTexts.iutFullName;
       default:
         return CTexts.diuFullName;
     }
@@ -110,6 +146,18 @@ class University {
         return 8;
       case "10":
         return 9;
+      case "11":
+        return 10;
+      case "12":
+        return 11;
+      case "13":
+        return 12;
+      case "14":
+        return 13;
+      case "15":
+        return 14;
+      case "16":
+        return 15;
       default:
         return 0;
     }

@@ -65,5 +65,41 @@ class CoverPageList {
       'shortName': CTexts.ewuShortName,
       'fullName': CTexts.ewuFullName,
     },
+    {
+      'id': '11',
+      'image': CImages.scuLogo,
+      'shortName': CTexts.cityShortName,
+      'fullName': CTexts.cityFullName,
+    },
+    {
+      'id': '12',
+      'image': CImages.gubLogo,
+      'shortName': CTexts.gubShortName,
+      'fullName': CTexts.gubFullName,
+    },
+    {
+      'id': '13',
+      'image': CImages.ruetLogo,
+      'shortName': CTexts.ruetShortName,
+      'fullName': CTexts.ruetFullName,
+    },
+    {
+      'id': '14',
+      'image': CImages.ruLogo,
+      'shortName': CTexts.ruShortName,
+      'fullName': CTexts.ruetFullName,
+    },
+    {
+      'id': '15',
+      'image': CImages.jnuLogo,
+      'shortName': CTexts.jnuShortName,
+      'fullName': CTexts.jnuFullName,
+    },
+    {
+      'id': '16',
+      'image': CImages.iutLogo,
+      'shortName': CTexts.iutShortName,
+      'fullName': CTexts.iutFullName,
+    },
   ];
 }
