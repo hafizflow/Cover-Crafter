@@ -67,7 +67,7 @@ class University {
       case '10':
         return CTexts.ewuShortName;
       case '11':
-        return CTexts.ewuShortName;
+        return CTexts.cityShortName;
       case '12':
         return CTexts.gubShortName;
       case '13':

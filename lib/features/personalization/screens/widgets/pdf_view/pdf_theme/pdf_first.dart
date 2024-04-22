@@ -313,7 +313,7 @@ class PdfFirst {
           );
         },
       ),
-    ); // Page
+    );
 
     return pdf.save();
   }
