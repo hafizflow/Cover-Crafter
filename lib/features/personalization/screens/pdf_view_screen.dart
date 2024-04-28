@@ -40,7 +40,8 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
     return Scaffold(
       // backgroundColor: CColors.dark,
       appBar: AppBar(
-        title: const Text('PDF', style: TextStyle(color: Colors.white)),
+        title: Text('${form.coverPageController.text} Cover Page',
+            style: const TextStyle(color: Colors.white)),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
@@ -53,7 +54,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
       ),
       body: GetBuilder<PdfThemeController>(builder: (theme) {
         return PdfPreview(
-          pdfFileName: 'CoverPage:${form.courseNameController.text}',
+          pdfFileName: '${form.courseNameController.text}.pdf',
           maxPageWidth: double.infinity,
           build: theme.updateViewPage(),
           canDebug: false,

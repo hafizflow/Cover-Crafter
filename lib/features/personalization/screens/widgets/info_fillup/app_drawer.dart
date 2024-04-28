@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -40,7 +41,8 @@ class AppDrawer extends StatelessWidget {
                   ListTile(
                     leading: const Icon(Icons.share_rounded),
                     title: const Text('Share App'),
-                    onTap: () {},
+                    onTap: () => Share.share(
+                        'https://drive.google.com/drive/folders/10XMCBBbDN72RDIZw9j9k5ICzJ2UXrp6r?usp=sharing'),
                   ),
                   ListTile(
                     leading: const Icon(CupertinoIcons.delete),

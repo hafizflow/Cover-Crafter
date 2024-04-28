@@ -18,6 +18,7 @@ dependencies:
   intl: ^0.19.0
   fluttertoast: ^8.2.5
   dropdown_button2: ^2.3.9
+  share_plus: ^9.0.0
 
 
   # Animation
