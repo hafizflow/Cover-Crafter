@@ -9,12 +9,12 @@ import '../../../../controllers/form/date_controller.dart';
 import '../../../../controllers/form/form_controller.dart';
 
 class PdfFirst {
-  final formController = FormController.instance;
+  final form = FormController.instance;
   final dateController = DateController.instance;
 
   bool getHeight() {
-    if (formController.universityLogoController.text == "" ||
-        formController.studentUniversityIdController.text == "1") {
+    if (form.universityLogoController.text == "" ||
+        form.studentUniversityIdController.text == "1") {
       return true;
     } else {
       return false;
@@ -22,8 +22,8 @@ class PdfFirst {
   }
 
   bool getTitleOrExperimentName() {
-    if (formController.coverPageController.text == "" ||
-        formController.coverPageController.text == "Assignment") {
+    if (form.coverPageController.text == "" ||
+        form.coverPageController.text == "Assignment") {
       return true;
     } else {
       return false;
@@ -34,9 +34,9 @@ class PdfFirst {
     final pdf = pw.Document();
 
     final img = await rootBundle.load(
-      formController.universityLogoController.text == ""
+      form.universityLogoController.text == ""
           ? CImages.myUniversity
-          : formController.universityLogoController.text,
+          : form.universityLogoController.text,
     );
 
     final imageBytes = img.buffer.asUint8List();
@@ -60,7 +60,7 @@ class PdfFirst {
                       alignment: pw.Alignment.center),
                   pw.SizedBox(height: PDFSpacing.spaceBtwSection - 4),
                   pw.Text(
-                    formController.coverPageController.text.trim(),
+                    form.coverPageController.text.trim(),
                     style: PDFTextStyle.headingTextStyle,
                   ),
                 ],
@@ -79,8 +79,7 @@ class PdfFirst {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text:
-                                formController.courseCodeController.text.trim(),
+                            text: form.courseCodeController.text.trim(),
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],
@@ -93,8 +92,7 @@ class PdfFirst {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text:
-                                formController.courseNameController.text.trim(),
+                            text: form.courseNameController.text.trim(),
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],
@@ -113,8 +111,7 @@ class PdfFirst {
                               style: PDFTextStyle.boldTextStyle,
                               children: [
                                 pw.TextSpan(
-                                  text: formController.titleController.text
-                                      .trim(),
+                                  text: form.titleController.text.trim(),
                                   style: PDFTextStyle.normalTextStyle,
                                 ),
                               ],
@@ -126,20 +123,20 @@ class PdfFirst {
                         pw.Column(
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             children: [
-                              pw.RichText(
-                                text: pw.TextSpan(
-                                  text: 'Experiment No : ',
-                                  style: PDFTextStyle.boldTextStyle,
-                                  children: [
-                                    pw.TextSpan(
-                                      text: formController
-                                          .experimentNoController.text
-                                          .trim(),
-                                      style: PDFTextStyle.normalTextStyle,
-                                    ),
-                                  ],
+                              if (form.experimentNoController.text != "")
+                                pw.RichText(
+                                  text: pw.TextSpan(
+                                    text: 'Experiment No : ',
+                                    style: PDFTextStyle.boldTextStyle,
+                                    children: [
+                                      pw.TextSpan(
+                                        text: form.experimentNoController.text
+                                            .trim(),
+                                        style: PDFTextStyle.normalTextStyle,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
                               pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                               pw.RichText(
                                 text: pw.TextSpan(
@@ -147,8 +144,7 @@ class PdfFirst {
                                   style: PDFTextStyle.boldTextStyle,
                                   children: [
                                     pw.TextSpan(
-                                      text: formController
-                                          .experimentNameController.text
+                                      text: form.experimentNameController.text
                                           .trim(),
                                       style: PDFTextStyle.normalTextStyle,
                                     ),
@@ -170,24 +166,23 @@ class PdfFirst {
                     ),
                     pw.SizedBox(height: PDFSpacing.spaceBtwSection - 4),
                     pw.Text(
-                      formController.teacherNameController.text.trim(),
+                      form.teacherNameController.text.trim(),
                       style: PDFTextStyle.boldTextStyle,
                     ),
                     pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                     pw.Text(
-                      formController.teacherDepartmentController.text.trim(),
+                      form.teacherDepartmentController.text.trim(),
                       style: PDFTextStyle.boldTextStyle,
                     ),
                     pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                     pw.RichText(
                       text: pw.TextSpan(
-                        text: formController.teacherDesignationController.text
-                            .trim(),
+                        text: form.teacherDesignationController.text.trim(),
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
                             text:
-                                ', ${formController.universityShortNameController.text.trim()}',
+                                ', ${form.universityShortNameController.text.trim()}',
                             style: PDFTextStyle.boldTextStyle,
                           ),
                         ],
@@ -211,8 +206,7 @@ class PdfFirst {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text: formController.studentNameController.text
-                                .trim(),
+                            text: form.studentNameController.text.trim(),
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],
@@ -225,8 +219,7 @@ class PdfFirst {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text:
-                                formController.studentIdController.text.trim(),
+                            text: form.studentIdController.text.trim(),
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],
@@ -239,8 +232,7 @@ class PdfFirst {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text: formController.studentSectionController.text
-                                .trim(),
+                            text: form.studentSectionController.text.trim(),
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],
@@ -253,8 +245,7 @@ class PdfFirst {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text: formController.studentSemesterController.text
-                                .trim(),
+                            text: form.studentSemesterController.text.trim(),
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],
@@ -267,8 +258,7 @@ class PdfFirst {
                         style: PDFTextStyle.boldTextStyle,
                         children: [
                           pw.TextSpan(
-                            text: formController.studentDeptController.text
-                                .trim(),
+                            text: form.studentDeptController.text.trim(),
                             style: PDFTextStyle.normalTextStyle,
                           ),
                         ],
@@ -276,7 +266,7 @@ class PdfFirst {
                     ),
                     pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                     pw.Text(
-                      formController.universityFullNameController.text.trim(),
+                      form.universityFullNameController.text.trim(),
                       style: PDFTextStyle.boldTextStyle,
                     ),
                   ],
