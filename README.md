@@ -2,6 +2,12 @@
 
 This app simplifies the process of making a cover page for university students.
 
+## Download Link
+https://drive.google.com/drive/folders/10XMCBBbDN72RDIZw9j9k5ICzJ2UXrp6r?usp=sharing
+
+You are welcome to download it without needing to provide any permissions for the 
+application's operation, ensuring your utmost security.
+
 ### Feature
 
 - User-friendly design

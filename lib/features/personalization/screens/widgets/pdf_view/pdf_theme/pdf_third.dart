@@ -130,19 +130,20 @@ class PdfThird {
                       pw.Column(
                           crossAxisAlignment: pw.CrossAxisAlignment.start,
                           children: [
-                            pw.RichText(
-                              text: pw.TextSpan(
-                                text: 'Experiment No : ',
-                                style: PDFTextStyle.boldTextStyle,
-                                children: [
-                                  pw.TextSpan(
-                                    text:
-                                        form.experimentNoController.text.trim(),
-                                    style: PDFTextStyle.normalTextStyle,
-                                  ),
-                                ],
+                            if (form.experimentNoController.text != "")
+                              pw.RichText(
+                                text: pw.TextSpan(
+                                  text: 'Experiment No : ',
+                                  style: PDFTextStyle.boldTextStyle,
+                                  children: [
+                                    pw.TextSpan(
+                                      text: form.experimentNoController.text
+                                          .trim(),
+                                      style: PDFTextStyle.normalTextStyle,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
                             pw.SizedBox(height: PDFSpacing.spaceBtwItem),
                             pw.RichText(
                               text: pw.TextSpan(
