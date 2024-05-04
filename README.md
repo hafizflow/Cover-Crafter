@@ -12,7 +12,7 @@ application's operation, ensuring your utmost security.
 
 - User-friendly design
 - One-time information entry ( Student Information )
-- Work for different university
+- Work for different university (16 University)
 - Download and Multi-Theme options for the cover page
 
 ### App Preview
