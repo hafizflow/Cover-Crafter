@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:cover_page/utils/constants/colors.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
@@ -9,7 +8,6 @@ import '../../../../../utils/constants/cover_page_list.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/form/field_controller.dart';
 import '../../../controllers/form/form_controller.dart';
-import '../../../controllers/services/university.dart';
 
 class CoverPageDropDown extends StatelessWidget {
   const CoverPageDropDown({
