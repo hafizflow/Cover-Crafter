@@ -1,4 +1,3 @@
-import 'package:cover_page/common/styles/pdf_view/pdf_spacing.dart';
 import 'package:cover_page/utils/constants/sizes.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -24,30 +23,16 @@ class MyCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CircleAvatar(
-                        backgroundColor: Colors.teal,
-                        radius: 20,
-                        child: CircleAvatar(
-                          backgroundImage:
-                              AssetImage(CImages.me), //NetworkImage
-                          radius: 20,
-                        ),
+                      Text(
+                        "Hafizur Rahman",
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
-                      const SizedBox(width: PDFSpacing.spaceBtwSection),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Hafizur Rahman",
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          Text(
-                            "Mobile App Developer",
-                            style: Theme.of(context).textTheme.labelSmall,
-                          ),
-                        ],
+                      Text(
+                        "Mobile App Developer",
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                     ],
                   ),
