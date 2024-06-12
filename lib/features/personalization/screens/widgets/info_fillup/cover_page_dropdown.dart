@@ -1,4 +1,3 @@
-
 import 'package:cover_page/utils/constants/colors.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -42,7 +41,10 @@ class CoverPageDropDown extends StatelessWidget {
         },
         style: Theme.of(context).textTheme.bodyLarge,
         decoration: const InputDecoration(
-          label: Text('  CoverPage'),
+          label: Text(
+            ' CoverPage',
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         dropdownStyleData: DropdownStyleData(
           decoration: BoxDecoration(
