@@ -11,7 +11,6 @@ import '../form/form_controller.dart';
 class OpenPdf {
   final formController = FormController.instance;
   final pdfThemeController = PdfThemeController.instance;
-  // final pdf = PdfFirst();
   Future<void> openPdf() async {
     try {
       final pdfBytes =

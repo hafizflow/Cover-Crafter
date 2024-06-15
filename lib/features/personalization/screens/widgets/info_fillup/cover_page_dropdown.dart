@@ -17,21 +17,21 @@ class CoverPageDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     final form = FormController.instance;
     final fieldController = FieldController.instance;
-    // final university = University();
     bool isDark = CHelperFunctions.isDarkMode(context);
 
     return Expanded(
       child: DropdownButtonFormField2<String>(
-        // value: form.coverPageController.text == ""
-        //     ? null
-        //     : CoverPageList.coverList[
-        //         university.getCoverPageType(form.coverPageController.text)],
-
         items: CoverPageList.coverList.map(
           (coverPageType) {
             return DropdownMenuItem<String>(
               value: coverPageType,
-              child: Text(coverPageType),
+              child: SizedBox(
+                width: 100,
+                child: Text(
+                  coverPageType,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             );
           },
         ).toList(),
@@ -41,9 +41,12 @@ class CoverPageDropDown extends StatelessWidget {
         },
         style: Theme.of(context).textTheme.bodyLarge,
         decoration: const InputDecoration(
-          label: Text(
-            ' CoverPage',
-            overflow: TextOverflow.ellipsis,
+          label: SizedBox(
+            width: 100,
+            child: Text(
+              ' CoverPage',
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
         dropdownStyleData: DropdownStyleData(
@@ -51,6 +54,9 @@ class CoverPageDropDown extends StatelessWidget {
             borderRadius: BorderRadius.circular(CSizes.borderRadiusMd),
             color: isDark ? Colors.grey.shade900 : CColors.softGrey,
           ),
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          padding: EdgeInsets.only(left: 16),
         ),
       ),
     );

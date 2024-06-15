@@ -61,7 +61,13 @@ class PdfSecond {
                       fontSize: form.universityFullNameController.text ==
                               CTexts.aiubFullName
                           ? 21
-                          : 25,
+                          : form.universityFullNameController.text ==
+                                  CTexts.ruetFullName
+                              ? 19
+                              : form.universityFullNameController.text ==
+                                      CTexts.buetFullName
+                                  ? 18
+                                  : 25,
                       fontWeight: pw.FontWeight.bold,
                     ),
                   ),
@@ -164,7 +170,7 @@ class PdfSecond {
                   pw.Text(
                     'Submitted To',
                     style: pw.TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: pw.FontWeight.bold,
                       color: PdfColors.deepPurple,
                     ),
@@ -198,7 +204,7 @@ class PdfSecond {
                   pw.Text(
                     'Submitted By',
                     style: pw.TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: pw.FontWeight.bold,
                       color: PdfColors.deepPurple,
                     ),

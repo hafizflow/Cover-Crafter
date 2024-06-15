@@ -19,8 +19,6 @@ class UniversityDropDown extends StatelessWidget {
     final university = University();
     bool isDark = CHelperFunctions.isDarkMode(context);
 
-    // log('University Id: ${form.studentUniversityIdController.text}');
-
     return Expanded(
       child: DropdownButtonFormField2<String>(
         /// Getting last given university
@@ -33,19 +31,24 @@ class UniversityDropDown extends StatelessWidget {
           (varsity) {
             return DropdownMenuItem<String>(
               value: varsity['id'],
-              child: Row(
-                children: [
-                  Image.asset(varsity['image'], width: 25),
-                  const SizedBox(width: 14),
-                  Text(varsity['shortName']),
-                ],
+              child: SizedBox(
+                width: 100,
+                child: Row(
+                  children: [
+                    Image.asset(varsity['image'], width: 25),
+                    const SizedBox(width: 14),
+                    Text(
+                      varsity['shortName'],
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
             );
           },
         ).toList(),
         onChanged: (id) {
           form.studentUniversityIdController.text = id.toString();
-          // log('University Id: ${form.studentUniversityIdController.text}');
 
           form.universityLogoController.text = university.getUniversityLogo(
             id.toString(),
@@ -63,7 +66,7 @@ class UniversityDropDown extends StatelessWidget {
         },
         style: Theme.of(context).textTheme.bodyLarge,
         decoration: const InputDecoration(
-          label: Text('  University'),
+          label: Text('University'),
         ),
         dropdownStyleData: DropdownStyleData(
           maxHeight: 200,
@@ -71,6 +74,9 @@ class UniversityDropDown extends StatelessWidget {
             borderRadius: BorderRadius.circular(CSizes.borderRadiusMd),
             color: isDark ? Colors.grey.shade900 : CColors.softGrey,
           ),
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          padding: EdgeInsets.only(left: 16),
         ),
       ),
     );

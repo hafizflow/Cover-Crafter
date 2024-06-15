@@ -17,8 +17,16 @@ class PdfThemeController extends GetxController {
   int _pdfPage = 1;
   int get pdfPage => _pdfPage;
 
-  void setPdfTheme(int val) {
+  var isLoading = false.obs;
+
+  void setPdfTheme(int val) async {
+    isLoading.value = true;
     _pdfPage = val;
+    update();
+    await Future.delayed(
+      const Duration(microseconds: 10000),
+    );
+    isLoading.value = false;
     update();
   }
 

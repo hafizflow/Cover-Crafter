@@ -93,7 +93,6 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                 GetBuilder<FieldController>(
                   builder: (controller) {
                     if (controller.isAssignment) {
-                      // log(controller.isAssignment.toString());
                       return CTextFormField(
                         label: 'Title',
                         prefixIcon: Iconsax.edit,
@@ -101,7 +100,6 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                         maxLength: 100,
                       );
                     }
-                    // log(controller.isAssignment.toString());
                     return Row(
                       children: [
                         Expanded(

@@ -56,8 +56,17 @@ class PdfThird {
                     style: pw.TextStyle(
                       fontSize: form.universityFullNameController.text ==
                               CTexts.aiubFullName
-                          ? 21
-                          : 25,
+                          ? 18
+                          : form.universityFullNameController.text ==
+                                  CTexts.buetFullName
+                              ? 17
+                              : form.universityFullNameController.text ==
+                                      CTexts.bupFullName
+                                  ? 22
+                                  : form.universityFullNameController.text ==
+                                          CTexts.ruetFullName
+                                      ? 19
+                                      : 25,
                       // fontWeight: pw.FontWeight.bold,
                       font: ttf,
                     ),
@@ -166,7 +175,7 @@ class PdfThird {
                   pw.Text(
                     'Submitted To',
                     style: pw.TextStyle(
-                      fontSize: 20,
+                      fontSize: 19,
                       fontWeight: pw.FontWeight.bold,
                       color: PdfColors.teal,
                     ),
@@ -205,7 +214,7 @@ class PdfThird {
                         pw.Text(
                           'Submitted By',
                           style: pw.TextStyle(
-                            fontSize: 20,
+                            fontSize: 19,
                             fontWeight: pw.FontWeight.bold,
                             color: PdfColors.teal,
                           ),

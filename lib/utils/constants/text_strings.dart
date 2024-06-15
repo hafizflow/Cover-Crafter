@@ -18,7 +18,7 @@ class CTexts {
   static const String ruetFullName =
       'Rajshahi University of Engineering & Technology';
   static const String jnuFullName = 'Jagannath University';
-  static const String ruFullName = 'Rajshahi University';
+  static const String ruFullName = 'University of Rajshahi';
 
   /// University Short Name
   static const String diuShortName = 'DIU';

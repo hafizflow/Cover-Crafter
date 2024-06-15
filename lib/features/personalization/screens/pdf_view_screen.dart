@@ -1,17 +1,15 @@
-import 'package:circular_menu/circular_menu.dart';
 import 'package:cover_page/features/personalization/controllers/form/form_controller.dart';
 import 'package:cover_page/features/personalization/controllers/pdf/pdf_controller.dart';
 import 'package:cover_page/features/personalization/controllers/pdf/pdf_theme_controller.dart';
 import 'package:cover_page/features/personalization/controllers/services/open_pdf.dart';
+import 'package:cover_page/features/personalization/screens/widgets/pdf_change_theme_button.dart';
 import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:printing/printing.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/sizes.dart';
 
 class PDFViewScreen extends StatefulWidget {
   const PDFViewScreen({super.key});
@@ -38,7 +36,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
     bool isDark = CHelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      // backgroundColor: CColors.dark,
       appBar: AppBar(
         title: Text('${form.coverPageController.text} Cover Page',
             style: const TextStyle(color: Colors.white)),
@@ -53,15 +50,21 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
             isDark ? CColors.buttonPrimary : CColors.buttonSecondary,
       ),
       body: GetBuilder<PdfThemeController>(builder: (theme) {
+        if (theme.isLoading.value) {
+          return Center(
+            child: LoadingAnimationWidget.staggeredDotsWave(
+              color: isDark ? Colors.teal : CColors.buttonSecondary,
+              size: 50,
+            ),
+          );
+        }
         return PdfPreview(
           pdfFileName: '${form.courseNameController.text}.pdf',
           maxPageWidth: double.infinity,
           build: theme.updateViewPage(),
           canDebug: false,
           loadingWidget: LoadingAnimationWidget.staggeredDotsWave(
-            color: CHelperFunctions.isDarkMode(context)
-                ? Colors.teal
-                : CColors.buttonSecondary,
+            color: isDark ? Colors.teal : CColors.buttonSecondary,
             size: 50,
           ),
           canChangePageFormat: false,
@@ -82,27 +85,8 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
           ],
         );
       }),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 50),
-        child: CircularMenu(
-          radius: 80,
-          alignment: Alignment.bottomRight,
-          items: [
-            CircularMenuItem(
-                iconSize: CSizes.iconSm + 4,
-                icon: FontAwesomeIcons.one,
-                onTap: () => pdfThemeController.setPdfTheme(1)),
-            CircularMenuItem(
-                iconSize: CSizes.iconSm + 4,
-                icon: FontAwesomeIcons.two,
-                onTap: () => pdfThemeController.setPdfTheme(2)),
-            CircularMenuItem(
-                iconSize: CSizes.iconSm + 4,
-                icon: FontAwesomeIcons.three,
-                onTap: () => pdfThemeController.setPdfTheme(3)),
-          ],
-        ),
-      ),
+      floatingActionButton:
+          PdfChangeThemeButton(pdfThemeController: pdfThemeController),
     );
   }
 }
