@@ -38,6 +38,7 @@ class SplashScreen extends StatelessWidget {
       ),
       splashIconSize: double.infinity,
       pageTransitionType: PageTransitionType.leftToRightWithFade,
+      splashTransition: SplashTransition.fadeTransition,
       duration: 600,
       nextScreen: const InfoFillUpScreen(),
     );

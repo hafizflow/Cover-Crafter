@@ -11,7 +11,6 @@ import 'package:cover_page/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
 import '../../../common/widgets/info_fillup/text_form_field.dart';
 import '../controllers/form/field_controller.dart';
 import '../controllers/form/form_controller.dart';
@@ -231,7 +230,21 @@ class _InfoFillUpScreenState extends State<InfoFillUpScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to(() => const PDFViewScreen());
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  const PDFViewScreen(),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) =>
+                                  FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          ),
+                        ),
+                      );
+
                       localStorage.setStudentInfo();
                       ShowShowSnackBar().getSnackBar()
                           ? CHelperFunctions.showToastMessage(

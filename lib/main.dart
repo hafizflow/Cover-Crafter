@@ -6,5 +6,7 @@ import 'app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  runApp(const CoverPageApp());
+  runApp(
+    const CoverPageApp(),
+  );
 }

@@ -31,7 +31,7 @@ class CTexts {
   static const String bracShortName = 'BRAC';
   static const String iubShortName = 'IUB';
   static const String ewuShortName = 'EWU';
-  static const String cityShortName = 'CU';
+  static const String cityShortName = 'SCU';
   static const String gubShortName = 'GUB';
   static const String iutShortName = 'IUT';
   static const String ruetShortName = 'RUET';
